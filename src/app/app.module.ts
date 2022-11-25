@@ -11,6 +11,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -26,7 +30,10 @@ import { ComponentsModule } from './components/components.module';
 		RouterModule,
 		ComponentsModule,
 		AppRoutingModule,
-		ScrollToModule.forRoot()
+		ScrollToModule.forRoot(),
+  provideFirebaseApp(() => initializeApp(environment.firebase)),
+  provideDatabase(() => getDatabase()),
+  provideFirestore(() => getFirestore())
 	],
 	providers: [],
 	bootstrap: [AppComponent]

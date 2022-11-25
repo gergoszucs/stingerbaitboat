@@ -1,4 +1,13 @@
 {
+  "targets": {
+    "stinger-dcdf2": {
+      "hosting": {
+        "pk2-angular": [
+          "stinger-dcdf2"
+        ]
+      }
+    }
+  },
   "projects": {
     "default": "stinger-dcdf2"
   }
