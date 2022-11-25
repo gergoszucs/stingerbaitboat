@@ -46,6 +46,11 @@ h5:not(.basket),
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 
+	.form-check {
+		display: flex;
+		justify-content: center;
+	}
+
 	.form-check,
 	.form-check-input {
 		margin: 0;
@@ -107,10 +112,18 @@ h5:not(.basket),
 
 	.row {
 		padding: 6px 0 0 10px;
+
+		.col-4 p{
+			margin-right: 10px;
+		}
 	}
 
 	.total-price {
 		margin-top: 12px;
+
+		.text-end h5 {
+			margin-right: 10px;
+		}
 	}
 
 	@media (max-width: 767px) {
@@ -153,5 +166,9 @@ h5:not(.basket),
 	.caveat {
 		text-align: center;
 		font-style: italic;
+	}
+
+	.form-group {
+		margin-bottom: 16px;
 	}
 }

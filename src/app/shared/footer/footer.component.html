@@ -1,12 +1,12 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row">
-			<nav class="footer-nav" *ngIf="!isRules">
+			<nav class="col footer-nav" *ngIf="!isRules">
 				<ul>
 					<li><a [routerLink]="['/adatkezeles']">Adatkezelés</a></li>
 				</ul>
 			</nav>
-			<div class="credits ml-auto">
+			<div class="col credits text-end">
 				<span class="copyright">
 					© {{test | date: 'yyyy'}} - Stinger Bait Boat
 				</span>

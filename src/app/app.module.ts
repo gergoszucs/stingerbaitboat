@@ -15,6 +15,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 		RouterModule,
 		ComponentsModule,
 		AppRoutingModule,
+		YouTubePlayerModule,
 		ScrollToModule.forRoot(),
   provideFirebaseApp(() => initializeApp(environment.firebase)),
   provideDatabase(() => getDatabase()),

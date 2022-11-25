@@ -180,6 +180,11 @@
 	z-index: 1029;
 }
 
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: end;
+}
+
 .navbar-transparent,
 [class*="bg"] {
 	.navbar-brand {

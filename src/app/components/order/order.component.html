@@ -344,105 +344,105 @@
 					</div>
 					<div class="grp">
 						<div class="col">
-							<div class="row">
+							<div class="row text-start">
 								<div>
 									<h5 class="basket">Hajó</h5>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{boat.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{boat.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row text-start">
 								<div>
 									<h5 class="basket">Szín</h5>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{color.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{color.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
-							<div class="row" *ngIf="radar.price != 0">
+							<div class="row text-start" *ngIf="radar.price != 0">
 								<div>
 									<h5 class="basket">Radar</h5>
 								</div>
 							</div>
 							<div class="row" *ngIf="radar.price != 0">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{radar.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{radar.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
-							<div class="row" *ngIf="autopilot.price != 0">
+							<div class="row text-start" *ngIf="autopilot.price != 0">
 								<div>
 									<h5 class="basket">Autopilot</h5>
 								</div>
 							</div>
 							<div class="row" *ngIf="autopilot.price != 0">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{autopilot.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{autopilot.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
-							<div class="row" *ngIf="battery.price != 0">
+							<div class="row text-start" *ngIf="battery.price != 0">
 								<div>
 									<h5 class="basket">Pót akkumulátor</h5>
 								</div>
 							</div>
 							<div class="row" *ngIf="battery.price != 0">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{battery.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{battery.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
-							<div class="row" *ngIf="bagChecked || lightChecked || seaweedChecked">
+							<div class="row text-start" *ngIf="bagChecked || lightChecked || seaweedChecked">
 								<div>
 									<h5 class="basket">Egyéb</h5>
 								</div>
 							</div>
 							<div class="row" *ngIf="bagChecked">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{bag.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{bag.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
 							<div class="row" *ngIf="lightChecked">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{light.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{light.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
 							<div class="row" *ngIf="seaweedChecked">
-								<div class="col-8 text-left">
+								<div class="col-8 text-start">
 									<p>{{seaweed.name}}</p>
 								</div>
-								<div class="col-4 text-right">
+								<div class="col-4 text-end">
 									<p>{{seaweed.price | number:'1.0-0'}} Ft</p>
 								</div>
 							</div>
 							<div class="row total-price">
-								<div>
+								<div class="col text-start">
 									<h5 class="basket">Összesen</h5>
 								</div>
-								<div class="col text-right">
+								<div class="col text-end">
 									<h5>{{totalPrice | number:'1.0-0'}} Ft</h5>
 								</div>
 							</div>

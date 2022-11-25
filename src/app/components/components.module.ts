@@ -10,6 +10,7 @@ import { BasicelementsComponent } from './basicelements/basicelements.component'
 import { ComponentsComponent } from './components.component';
 import { OrderComponent } from "./order/order.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
 	imports: [
@@ -18,6 +19,7 @@ import { PrivacyComponent } from "./privacy/privacy.component";
 		NgbModule,
 		NouisliderModule,
 		RouterModule,
+		YouTubePlayerModule,
 		JwBootstrapSwitchNg2Module
 	],
 	declarations: [
