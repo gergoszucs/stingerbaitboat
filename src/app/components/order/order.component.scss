@@ -1,0 +1,157 @@
+.title {
+	width: 100%;
+	margin-top: 16px;
+	margin-bottom: 0;
+
+	h2 {
+		text-align: center;
+	}
+}
+
+p {
+	font-weight: 400;
+	color: slategrey;
+}
+
+.dot {
+	height: 30px;
+	width: 30px;
+	border-radius: 15%;
+	display: inline-block;
+	border: 1px solid gray;
+	margin: 2px;
+}
+
+h3 {
+	margin: 36px 0 10px 0;
+	font-weight: 500;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+h5:not(.basket),
+.dot {
+	font-weight: 500;
+	margin-top: 20px;
+}
+
+.subtitle {
+	margin-left: 16px;
+	text-align: justify;
+}
+
+.grp {
+	margin-top: 16px;
+	text-align: center;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+
+	.form-check,
+	.form-check-input {
+		margin: 0;
+		padding: 0;
+		position: inherit;
+		margin-bottom: 10px;
+	}
+
+	.price {
+		margin: 4px 0 8px 0;
+	}
+
+	input {
+		height: 17px;
+		width: 17px;
+	}
+}
+
+.boat {
+
+	img {
+		height: 250px;
+		width: 250px;
+		margin: 10px 0 10px 0;
+	}
+}
+
+.radar {
+
+	.col-sm-2 {
+		margin: auto;
+	}
+
+	.img-circle {
+		height: 250px;
+	}
+}
+
+.form-check input[type=checkbox] {
+	opacity: 1;
+	visibility: visible;
+}
+
+.summary {
+	h5 {
+		font-weight: 500;
+		margin-top: 6px;
+		margin-bottom: 0;
+		margin-left: 6px;
+	}
+
+	.grp {
+		padding-bottom: 12px;
+	}
+
+	.grp p {
+		margin: 0 0 0 20px;
+	}
+
+	.row {
+		padding: 6px 0 0 10px;
+	}
+
+	.total-price {
+		margin-top: 12px;
+	}
+
+	@media (max-width: 767px) {
+		.grp {
+			p {
+				margin: 0;
+			}
+
+			.text-right {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.form-wrapper,
+	.button-wrapper {
+		margin-top: 24px;
+		display: flex;
+		justify-content: center;
+	}
+
+	form {
+		max-width: 600px;
+
+		button {
+			width: 150px;
+
+		}
+
+		label {
+			font-size: 15px;
+			font-weight: 400;
+		}
+
+		small {
+			font-size: 100%;
+		}
+	}
+
+	.caveat {
+		text-align: center;
+		font-style: italic;
+	}
+}

@@ -1,17 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavigationEnd, Router } from "@angular/router";
+import { ScrollToService } from "@nicky-lenaers/ngx-scroll-to";
 
 @Component({
-  selector: 'app-basicelements',
-  templateUrl: './basicelements.component.html',
-  styleUrls: ['./basicelements.component.scss']
+	selector: 'app-basicelements',
+	templateUrl: './basicelements.component.html',
+	styleUrls: ['./basicelements.component.scss']
 })
-export class BasicelementsComponent implements OnInit {
-    simpleSlider = 40;
-    doubleSlider = [20, 60];
-    state_default: boolean = true;
-    focus: any;
-    constructor() { }
+export class BasicelementsComponent {
+	fragment: string;
 
-    ngOnInit() {}
-
+	constructor(router: Router, scrollToService: ScrollToService) {
+		router.events.filter(event => event instanceof NavigationEnd)
+			.subscribe(event => {
+				const url = (event as NavigationEnd).url;
+				if (url.includes('#')) {
+					this.fragment = url.substring(url.indexOf('#'), url.length);
+					scrollToService.scrollTo({
+						target: this.fragment
+					});
+				}
+			});
+	}
 }

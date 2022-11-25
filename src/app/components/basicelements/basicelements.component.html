@@ -1,191 +1,119 @@
-<div class="section section-buttons">
-    <div class="container">
-        <div class="tim-title">
-            <h2>Basic Components</h2>
-        </div>
-        <div id="buttons">
-            <div class="tim-title">
-                <h3>Buttons
-                    <br/>
-                    <small>Pick your style</small>
-                </h3>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-danger">Default</button>
-                    <button type="button" class="btn btn-danger btn-round">Round</button>
-                    <button type="button" class="btn btn-danger btn-round"><i class="fa fa-heart"></i> With Icon</button>
-                    <button type="button" class="btn btn-danger btn-just-icon"><i class="fa fa-heart"></i></button>
-                    <button type="button" class="btn btn-danger btn-link">Simple</button>
-                </div>
-            </div>
-            <div class="tim-title">
-                <h3><small>Pick your size</small></h3>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-outline-danger btn-sm">Small</button>
-                    <button type="button" class="btn btn-outline-danger">Regular</button>
-                    <button type="button" class="btn btn-outline-danger btn-lg">Large</button>
-                </div>
-            </div>
-            <div class="tim-title">
-                <h3><small>Pick your color</small></h3>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-outline-default btn-round">Default</button><button type="button" class="btn btn-outline-primary btn-round">Primary</button>
-                    <button type="button" class="btn btn-outline-info btn-round">Info</button>
-                    <button type="button" class="btn btn-outline-success btn-round">Success</button>
-                    <button type="button" class="btn btn-outline-warning btn-round">Warning</button>
-                    <button type="button" class="btn btn-outline-danger btn-round">Danger</button>
-                </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-default btn-round">Default</button>
-                    <button type="button" class="btn btn-primary btn-round">Primary</button>
-                    <button type="button" class="btn btn-info btn-round">Info</button>
-                    <button type="button" class="btn btn-success btn-round">Success</button>
-                    <button type="button" class="btn btn-warning btn-round">Warning</button>
-                    <button type="button" class="btn btn-danger btn-round">Danger</button>
-                </div>
-            </div>
-        </div>
-            <br/>
-        <div class="tim-title">
-            <h3>Links</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <a href="#0" class="btn btn-link btn-default">Default</a>
-                <a href="#0" class="btn btn-link btn-primary">Primary</a>
-                <a href="#0" class="btn btn-link btn-success">Success</a>
-                <a href="#0" class="btn btn-link btn-info">Info</a>
-                <a href="#0" class="btn btn-link btn-warning">Warning</a>
-                <a href="#0" class="btn btn-link btn-danger">Danger</a>
-                <a href="#0" class="btn btn-link btn-neutral">Neutral</a>
-            </div>
-        </div>
-        <br/>
-        <div class="tim-title">
-            <h3>Inputs</h3>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Default">
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group has-success">
-                    <input type="text" class="form-control form-control-success" id="inputSuccess1" value="Success">
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group has-danger">
-                    <input type="text" class="form-control form-control-danger" id="inputDanger1" value="Error">
-                    <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" (focus)="focus=true" (blur)="focus=false" >
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-group" aria-hidden="true"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-sm-6 col-lg-3">
-                <div class="tim-title">
-                    <h3>Checkboxes</h3>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    Unchecked
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="">
-                    Checked
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check disabled">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" disabled="">
-                    Disabled unchecked
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check disabled">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" checked="" disabled="">
-                    Disabled checked
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="tim-title">
-                    <h3>Radio Buttons</h3>
-                </div>
-                <div class="form-check-radio">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
-                    Radio is off
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check-radio">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked="">
-                    Radio is on
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check-radio disabled">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios3" value="option3" disabled="">
-                    Disabled Radio is off
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-                <div class="form-check-radio disabled">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios4" value="option3" checked disabled="">
-                    Disabled Radio is on
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="tim-title">
-                    <h3>Toggle Buttons</h3>
-                </div>
-                <bSwitch
-                    [switch-on-color]="'primary'">
-                </bSwitch>
-                <bSwitch
-                    [switch-on-color]="'primary'"
-                    [(ngModel)]="state_default"> Toggle is off
-                </bSwitch>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="tim-title">
-                    <h3>Sliders</h3>
-                </div>
-                <nouislider [connect]="false" [min]="0" [max]="100" [step]="1" [(ngModel)]="simpleSlider" [tooltips]="false" class="slider"></nouislider>
-                <br>
-                <nouislider class="slider slider-info" [connect]="true" [min]="0" [max]="100" [step]="1" [(ngModel)]="doubleSlider" [tooltips]="false"></nouislider>
-            </div>
-        </div>
-    </div>
+<div class="section">
+	<div class="container">
+		<div class="title">
+			<h2>Stinger Bait Boat</h2>
+			<img src="assets/img/stinger-logo2.png" style="margin-top: 16px" alt="Stinger Bait Boat">
+		</div>
+		<div class="introduction">
+			<p>Üdvözöllek oldalamon! </p>
+			<p>Szabó Bernát vagyok a Stinger etetőhajók forgalmazója. </p>
+			<p>A sport horgászat iránti tiszteletem és a minőségi etetőhajók iránti kereslett miatt,
+				úgy hozta a sors, hogy megkezdtem egyedi hajóim értékesítését.</p>
+			<p>Nagyon köszönöm, hogy felkerested oldalamat. Kérlek nézz körül a termékeim között és keress bizalommal!
+			</p>
+			<p>Mottónk:
+				<i>"Ha halat akarsz fogni, meg kell értened, hogyan gondolkodnak; ha Te hal lennél, mikor harapnál rá a
+					csalira. Aztán oda dobd a horgot, ahol leginkább sejted a halat!"</i>
+			</p>
+		</div>
+		<div id="hajok">
+			<ngb-carousel>
+				<ng-template ngbSlide>
+					<img src="./assets/img/carousel1.jpg" alt="Random first slide">
+					<div class="carousel-caption">
+						<p>Felirat 1</p>
+					</div>
+				</ng-template>
+				<ng-template ngbSlide>
+					<img src="./assets/img/carousel3.jpg" alt="Random second slide">
+					<div class="carousel-caption">
+						<p>Felirat 2</p>
+					</div>
+				</ng-template>
+				<ng-template ngbSlide>
+					<img src="./assets/img/carousel4.jpg" alt="Random third slide">
+					<div class="carousel-caption">
+						<p>Felirat 3</p>
+					</div>
+				</ng-template>
+			</ngb-carousel>
+		</div>
+		<div class="boat-common">
+			<p>Minden Beluga hajónk az alábbi alap felszereltséggel rendelkezik:</p>
+			<ul>
+				<li class="list-group-item"><i class="fa fa-check"></i>Méret: 82cm x 32cm x 17cm </li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Hatótávolság: 300-500 méter</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Erős ütésálló műanyag test</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Tartály méret: 1-1.5 kg etető anyag + szerelék
+				</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>IMAX B6 okostöltő 12/220V</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>6 csatornás digitális távirányító</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Akkumulátor állapot kijelzése távirányitón</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Erős led fények elöl-hátul, távirányítóról
+					kapcsolható</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Masszív hajó állvány</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Teljes körű, 2 éves garacia</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Minden hajó fóliásan kerül átadásra</li>
+			</ul>
+			<p>A hajó 3 különböző kivitelben érhető el:</p>
+		</div>
+		<div class="table-responsive">
+			<table class="table" style="text-align: center;">
+				<thead>
+					<tr>
+						<th scope="col">Stinger Beluga</th>
+						<th scope="col">Basic</th>
+						<th scope="col">Medium</th>
+						<th scope="col">Max</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Motor</th>
+						<td>775-ös 200W szénkefés</td>
+						<td>1600W BL motor szénkefe mentes</td>
+						<td>2000W BL motor szénkefe mentes</td>
+					</tr>
+					<tr>
+						<th scope="row"> Akkumulátor</th>
+						<td>5000mhA Li-Po</td>
+						<td>5000mhA Li-Po</td>
+						<td>9500mhA Li-Po</td>
+					</tr>
+					<tr>
+						<th scope="row">Behúzások száma</th>
+						<td>18-25</td>
+						<td>18-25</td>
+						<td>10-20</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="order">
+			<a [routerLink]="['/rendelés']" class="nav-link"><button
+					class="btn btn-danger btn-block btn-round">Rendelés</button></a>
+		</div>
+		<div id="kapcsolat">
+			<div class="container text-center contact">
+				<div class="row">
+					<div class="col-md-8 ml-auto mr-auto text-center">
+						<h3>Kérdésed van?</h3>
+						<p>Vedd fel velünk bátran a kapcsolatot az alábbi elérhetőségek bármelyikén!
+						</p>
+					</div>
+				</div>
+				<div class="contact-items">
+					<a href="tel:+36303495477">
+						<p><i class="fa fa-phone" style="color: green"></i>(+36)30-349-54-77</p>
+					</a>
+					<a href="https://www.facebook.com/messages/t/102529678534761">
+						<p><i class="fa fa-facebook-official" style="color: #1877f2"></i>&nbsp;Messenger üzenet</p>
+					</a>
+					<a href="mailto:stingerbaitboat@gmail.com">
+						<p><i class="fa fa-envelope" style="color: darkred"></i>&nbsp;stingerbaitboat@gmail.com</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

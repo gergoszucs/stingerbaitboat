@@ -1,0 +1,17 @@
+nav:not(.navbar-transparent) {
+	a:hover {
+		color: #f5593d;
+	}
+}
+
+img {
+	height: 32px;
+}
+
+@media screen and (max-width: 991px) {
+	.navbar {
+		padding-left: 18px;
+		padding-right: 10px;
+		height: 50px;
+	}
+}

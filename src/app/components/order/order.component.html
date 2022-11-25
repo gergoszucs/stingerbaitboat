@@ -1,0 +1,501 @@
+<div class="wrapper">
+	<div class="page-header page-header-xs" data-parallax="true"
+		style="background-image: url('./assets/img/delivery.jpg');">
+		<div class="filter"></div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="row main">
+				<div class="title">
+					<h2>Rendelés</h2>
+				</div>
+
+				<div class="container boat">
+					<div>
+						<h3>Hajó</h3>
+						<p class="subtitle">A hajókról, azok specifikációjáról részletesebben <a
+								[routerLink]="['/index']" routerLinkActive="active" fragment="hajok">itt</a> olvashatsz.
+						</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<h5>Stinger Beluga Basic</h5>
+								<img src="./assets/img/beluga-basic.png" alt="Circle Image"
+									class="img-circle img-no-padding img-responsive">
+								<p class="price">200,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Basic"
+										checked (change)="onBoatChange($event)" value="200000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>Stinger Beluga Medium</h5>
+								<img src="./assets/img/beluga-medium.png" alt="Circle Image"
+									class="img-circle img-no-padding img-responsive">
+								<p class="price">250,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Medium"
+										(change)="onBoatChange($event)" value="250000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>Stinger Beluga Max</h5>
+								<img src="./assets/img/beluga-max.png" alt="Circle Image"
+									class="img-circle img-no-padding img-responsive">
+								<p class="price">300,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Max"
+										(change)="onBoatChange($event)" value="300000">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container color">
+					<div>
+						<h3>Szín</h3>
+						<p class="subtitle">Válaszd ki a számodra legmegfelelőbb színkombinációt, vagy kérj akár
+							teljesen egyedi, VTN
+							fényezést.</p>
+						<p class="subtitle">Ne feledd, a szín nem csak esztétikai, de láthatósági szempontból is fontos!
+						</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<span class="dot" style="background-color: white"></span>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio" id="Fehér" checked
+										(change)="onColorChange($event)" value="0">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio" id="Fekete"
+										(change)="onColorChange($event)" value="0">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: white"></span>
+								<span class="dot" style="background-color: black"></span>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-fehér-fekete" value="0">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: white"></span>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-fekete-fehér" value="0">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: yellow"></span>
+								<span class="dot" style="background-color: yellow"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: yellow"></span>
+								<span class="dot" style="background-color: black"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: yellow"></span>
+								<span class="dot" style="background-color: white"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: red"></span>
+								<span class="dot" style="background-color: red"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: red"></span>
+								<span class="dot" style="background-color: black"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<span class="dot" style="background-color: black"></span>
+								<span class="dot" style="background-color: red"></span>
+								<span class="dot" style="background-color: white"></span>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio"
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>Egyedi VTN</h5>
+								<p class="price">40,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="colorRadio" id="Egyedi VTN"
+										(change)="onColorChange($event)" value="40000">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="container radar">
+					<div>
+						<h3>Radar</h3>
+						<p class="subtitle">Az etetőhajó önmagában is egy nagyon hasznos eszköz, de igazán jól egy
+							minőségi halradarral
+							együtt használható.</p>
+						<p class="subtitle">A Toslon radarok tökéletes képet adnak a vízfenékről, így biztosan oda
+							juttathatod el a
+							szereléket, ahol szerinted a legnagyobb eséllyel található hal.</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm-2">
+								<h5>Nem kérek</h5>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadar" id="Radar nélkül"
+										(change)="onRadarChange($event)" value="0" checked>
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<h5>Toslon Tf 520</h5>
+								<img src="./assets/img/tf520.jpg" alt="Circle Image"
+									class="img-circle img-no-padding img-responsive">
+								<p class="price">250,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadar" id="Toslon Tf 520"
+										(change)="onRadarChange($event)" value="250000">
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<h5>Toslon Tf 640 + GPS</h5>
+								<img src="./assets/img/tf640.jpg" alt="Circle Image"
+									class="img-circle img-no-padding img-responsive">
+								<p class="price">350,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatRadar" id="Toslon Tf 640"
+										(change)="onRadarChange($event)" value="350000">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container autopilot">
+					<div>
+						<h3>Autopilot</h3>
+						<p class="subtitle">Táviranyíthatóba építhető autopilot rendszer, amely 5 etetési helyet képes
+							tárolni és ezekre
+							visszatalálni.</p>
+						<p class="subtitle">A behúzás után gombnyomásra a partra is visszatalál magától.</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<h5>Nem kérek</h5>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatPilot" id="Nem kérek"
+										(change)="onAutopilotChange($event)" value="0" checked>
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>Félautomata</h5>
+								<p class="price">60,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatPilot" id="Félautomata"
+										(change)="onAutopilotChange($event)" value="60000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>Automata</h5>
+								<p class="price">160,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="boatPilot" id="Automata"
+										(change)="onAutopilotChange($event)" value="160000">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container battery">
+					<div>
+						<h3>Pót akkumulátor</h3>
+						<p class="subtitle">Többen horgásznátok egyszerre a hajóval?</p>
+						<p class="subtitle">Esetleg nem lesz áram a több napos peca során?</p>
+						<p class="subtitle">Válassz egy pót akkumulátort, hogy biztosan ne merülj le a horgászat közben!
+						</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<h5>Nem kérek</h5>
+								<p class="price">0 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="battery" id="Nem kérek"
+										(change)="onBatteryChange($event)" value="0" checked>
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>5000mhA</h5>
+								<p class="price">20,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="battery" id="5000mhA"
+										(change)="onBatteryChange($event)" value="20000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>6200mhA</h5>
+								<p class="price">25,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="battery" id="6200mhA"
+										(change)="onBatteryChange($event)" value="25000">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>9500mhA</h5>
+								<p class="price">30,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="battery" id="9500mhA"
+										(change)="onBatteryChange($event)" value="30000">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container others">
+					<div>
+						<h3>Egyéb</h3>
+						<p class="subtitle">Hasznos kiegészítők, melyek segítenek a tájékozódásban és a hajód
+							állapotának megőrzésében.
+						</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<h5>{{bag.name}}</h5>
+								<p class="price">{{bag.price | number:'1.0-0'}} Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" (change)="toggleBag()">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>{{light.name}}</h5>
+								<p class="price">{{light.price | number:'1.0-0'}} Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" (change)="toggleLight()">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>{{seaweed.name}}</h5>
+								<p class="price">{{seaweed.price | number:'1.0-0'}} Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" (change)="toggleSeaweed()">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container summary">
+					<div>
+						<h3>Kosár</h3>
+						<p class="subtitle">Az alábbi termékeket választottad ki.</p>
+					</div>
+					<div class="grp">
+						<div class="col">
+							<div class="row">
+								<div>
+									<h5 class="basket">Hajó</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-8 text-left">
+									<p>{{boat.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{boat.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row">
+								<div>
+									<h5 class="basket">Szín</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-8 text-left">
+									<p>{{color.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{color.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="radar.price != 0">
+								<div>
+									<h5 class="basket">Radar</h5>
+								</div>
+							</div>
+							<div class="row" *ngIf="radar.price != 0">
+								<div class="col-8 text-left">
+									<p>{{radar.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{radar.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="autopilot.price != 0">
+								<div>
+									<h5 class="basket">Autopilot</h5>
+								</div>
+							</div>
+							<div class="row" *ngIf="autopilot.price != 0">
+								<div class="col-8 text-left">
+									<p>{{autopilot.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{autopilot.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="battery.price != 0">
+								<div>
+									<h5 class="basket">Pót akkumulátor</h5>
+								</div>
+							</div>
+							<div class="row" *ngIf="battery.price != 0">
+								<div class="col-8 text-left">
+									<p>{{battery.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{battery.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="bagChecked || lightChecked || seaweedChecked">
+								<div>
+									<h5 class="basket">Egyéb</h5>
+								</div>
+							</div>
+							<div class="row" *ngIf="bagChecked">
+								<div class="col-8 text-left">
+									<p>{{bag.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{bag.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="lightChecked">
+								<div class="col-8 text-left">
+									<p>{{light.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{light.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row" *ngIf="seaweedChecked">
+								<div class="col-8 text-left">
+									<p>{{seaweed.name}}</p>
+								</div>
+								<div class="col-4 text-right">
+									<p>{{seaweed.price | number:'1.0-0'}} Ft</p>
+								</div>
+							</div>
+							<div class="row total-price">
+								<div>
+									<h5 class="basket">Összesen</h5>
+								</div>
+								<div class="col text-right">
+									<h5>{{totalPrice | number:'1.0-0'}} Ft</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<br>
+						<p>A rendelés véglegesítéséhez kérlek add meg az alábbi adatokat.</p>
+
+						<div class="form-wrapper">
+							<form>
+								<div class="form-group">
+									<label for="nameInput">Név</label>
+									<input type="text" class="form-control" id="nameInput"
+										placeholder="Add meg a nevedet" required>
+								</div>
+								<div class="form-group">
+									<label for="emailInput">Email</label>
+									<input type="email" class="form-control" id="emailInput"
+										aria-describedby="emailHelp" placeholder="Add meg az email címed" required>
+									<small id="emailHelp" class="form-text text-muted">Kérlek ellenőrizd a helyességét,
+										ide
+										fogjuk küldeni a további tudnivalókat.</small>
+								</div>
+								<div class="form-group">
+									<label for="addressInput">Szállítási cím</label>
+									<input type="text" class="form-control" id="nameInput"
+										placeholder="Add meg hová küldhetjük a hajót" required>
+								</div>
+								<div class="form-check">
+									<label for="emailInput">Telefon</label>
+									<input type="tel" class="form-control" id="phoneInput"
+										placeholder="Add meg a telefon számod" required>
+								</div>
+								<div class="button-wrapper">
+									<button type="submit"
+										class="btn btn-danger btn-block btn-round nav-link">Rendelés</button>
+								</div>
+							</form>
+						</div>
+						<br>
+						<div class="caveat">
+							<p>A fizetés mindig két részletben történik, az első részletet előre kell
+								utalni!</p>
+							<p>A második részlet minden esetben 60 ezer forint, amit az átvételnél kell
+								kifizetni!</p>
+							<p>Rendelés után erről egy e-mailt küldünk, amiben benne van minden információ.</p>
+							<p>A pénz beérkezésére 3 munkanap áll rendelkezésre, különben a rendelés törlődik!</p>
+							<p>Bármilyen kérdéssel hívjon bizalommal: +36-30/349-54-77</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
