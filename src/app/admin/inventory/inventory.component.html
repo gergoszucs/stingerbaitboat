@@ -1,0 +1,73 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="container">
+            <div class="text-center">
+                <h3>Készlet</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table" style="text-align: center">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-md-5">Név</th>
+                            <th scope="col" class="col-md-4">Darab</th>
+                            <th scope="col" class="col-md-3"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of items">
+                            <tr class="item-row">
+                                <td>
+                                    <p *ngIf="!isBeingEdited(item.id)">{{item.name}} </p>
+                                    <input *ngIf="isBeingEdited(item.id)" [value]="item.name"
+                                        (keyup)="parseName($event)" />
+                                </td>
+                                <td>
+                                    <p *ngIf="!isBeingEdited(item.id)">{{item.count}}</p>
+                                    <input *ngIf="isBeingEdited(item.id)" [value]="item.count"
+                                        (keyup)="parseCount($event)" />
+                                </td>
+                                <td>
+                                    <i *ngIf="!isBeingEdited(item.id)" class="fa fa-pencil" style="color:orange"
+                                        (click)="onEdit(item)" data-toggle="tooltip" data-placement="top"
+                                        title="Szerkesztés"></i>
+                                    <i *ngIf="isBeingEdited(item.id)" class="fa fa-download" style="color:green"
+                                        (click)="onSave()" data-toggle="tooltip" data-placement="top"
+                                        title="Mentés"></i>
+                                    <i *ngIf="isBeingEdited(item.id)" class="fa fa-ban" style="color:orange"
+                                        (click)="onCancel()" data-toggle="tooltip" data-placement="top"
+                                        title="Elvetés"></i>
+                                    <i *ngIf="!isBeingEdited(item.id)" class="fa fa-trash" style="color:red"
+                                        (click)="onDelete(item.id)" data-toggle="tooltip" data-placement="top"
+                                        title="Törlés"></i>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+
+
+                <div *ngIf="this.itemToCreate" class="new-item">
+                    <div class="text-center" style="display:block; margin: 0">
+                        <h3 style="margin: 0">Új alkatrész felvétele</h3>
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Név:</strong></p>
+                        <input (keyup)="parseNewName($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Darab:</strong></p>
+                        <input (keyup)="parseNewCount($event)" />
+                    </div>
+                    <div class="item-actions">
+                        <i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+                            data-placement="top" title="Mentés"></i>
+                        <i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+                            data-placement="top" title="Elvetés"></i>
+                    </div>
+                </div>
+                <i *ngIf="!this.itemToCreate" class="fa fa-plus" style="color:green ; font-size: 20px"
+                    (click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új alkatrész"></i>
+            </div>
+        </div>
+    </div>
+</div>

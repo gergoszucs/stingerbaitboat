@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from "@angular/router";
 
 @Component({
 	selector: 'app-footer',
@@ -8,12 +7,4 @@ import { NavigationEnd, Router } from "@angular/router";
 })
 export class FooterComponent {
 	test: Date = new Date();
-	isRules: boolean;
-
-	constructor(router: Router) {
-		router.events.filter(event => event instanceof NavigationEnd)
-			.subscribe(event => {
-				this.isRules = (event as NavigationEnd).url.includes('adatkezeles');
-			});
-	}
 }

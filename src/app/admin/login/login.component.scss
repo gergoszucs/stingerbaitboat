@@ -1,0 +1,38 @@
+.content-center {
+    -ms-transform: translate(-50%, -75%);
+    text-align: center;
+
+    .title-brand {
+        .presentation-title {
+            background: none;
+        }
+    }
+}
+
+div.page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.login-form {
+    input {
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+
+    .wrong-password {
+        border-color: red;
+    }
+}
+
+.invalid-password {
+    color: red;
+    font-size: 16px;
+    font-weight: normal;
+}

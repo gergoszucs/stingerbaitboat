@@ -1,46 +1,61 @@
 <div class="section">
 	<div class="container">
-		<div class="title">
-			<h2>Stinger Bait Boat</h2>
-			<br>
-			
+		<div class="col title">
+			<div class="row-md-8">
+				<h2>Stinger Bait Boat</h2>
+			</div>
+			<div class="row-md-8"><img src="assets/img/fedexlogo.png" alt="Stinger Bait Boat"
+					style="height: 48px; margin-bottom: 40px;"><br></div>
+			<div class="row-md-8">
+				<youtube-player videoId="XsyQLye2DhQ" suggestedQuality="highres" [height]="screenHeight"
+					[width]="screenWidth">
+				</youtube-player>
+			</div>
 		</div>
 		<div class="introduction">
-			<p>Üdvözöllek oldalamon! </p>
-			<p>Szabó Bernát vagyok a Stinger etetőhajók forgalmazója. </p>
+			<p>Üdvözöllek az oldalamon! </p><br>
+			<p>Szabó Bernát vagyok a Stinger etetőhajók forgalmazója. </p><br>
 			<p>A sport horgászat iránti tiszteletem és a minőségi etetőhajók iránti kereslett miatt,
 				úgy hozta a sors, hogy megkezdtem egyedi hajóim értékesítését.</p>
 			<p>Nagyon köszönöm, hogy felkerested oldalamat. Kérlek nézz körül a termékeim között és keress bizalommal!
-			</p>
+			</p><br>
 			<p>Mottónk:
 				<i>"Ha halat akarsz fogni, meg kell értened, hogyan gondolkodnak; ha Te hal lennél, mikor harapnál rá a
 					csalira. Aztán oda dobd a horgot, ahol leginkább sejted a halat!"</i>
 			</p>
 		</div>
-		<div id="hajok">
-			<ngb-carousel>
-				<ng-template ngbSlide>
-					<img src="./assets/img/carousel1.jpg" alt="Random first slide">
-					<div class="carousel-caption">
-						<p>Felirat 1</p>
-					</div>
-				</ng-template>
-				<ng-template ngbSlide>
-					<img src="./assets/img/carousel3.jpg" alt="Random second slide">
-					<div class="carousel-caption">
-						<p>Felirat 2</p>
-					</div>
-				</ng-template>
-				<ng-template ngbSlide>
-					<img src="./assets/img/carousel4.jpg" alt="Random third slide">
-					<div class="carousel-caption">
-						<p>Felirat 3</p>
-					</div>
-				</ng-template>
-			</ngb-carousel>
+		<div class="row slideshow">
+			<div class="col-md-8">
+				<ngb-carousel>
+					<ng-template ngbSlide>
+						<div>
+							<img src="./assets/img/carousel1.jpg" alt="Random first slide">
+							<div class="carousel-caption">
+								<p></p>
+							</div>
+						</div>
+					</ng-template>
+					<ng-template ngbSlide>
+						<div>
+							<img src="./assets/img/carousel3.jpg" alt="Random second slide">
+							<div class="carousel-caption">
+								<p></p>
+							</div>
+						</div>
+					</ng-template>
+					<ng-template ngbSlide>
+						<div>
+							<img src="./assets/img/carousel4.jpg" alt="Random third slide">
+							<div class="carousel-caption">
+								<p></p>
+							</div>
+						</div>
+					</ng-template>
+				</ngb-carousel>
+			</div>
 		</div>
-		<div class="boat-common">
-			<p>Minden Beluga hajónk az alábbi alap felszereltséggel rendelkezik:</p>
+		<div id="hajok" class="boat-common">
+			<p style="margin-bottom: 18px">Minden Beluga hajónk az alábbi alap felszereltséggel rendelkezik:</p>
 			<ul>
 				<li class="list-group-item"><i class="fa fa-check"></i>Méret: 82cm x 32cm x 17cm </li>
 				<li class="list-group-item"><i class="fa fa-check"></i>Hatótávolság: 300-500 méter</li>
@@ -56,6 +71,7 @@
 				<li class="list-group-item"><i class="fa fa-check"></i>Teljes körű, 2 éves garacia</li>
 				<li class="list-group-item"><i class="fa fa-check"></i>Minden hajó fóliásan kerül átadásra</li>
 			</ul>
+			<br>
 			<p>A hajó 3 különböző kivitelben érhető el:</p>
 		</div>
 		<div class="table-responsive">
@@ -94,7 +110,7 @@
 			<a [routerLink]="['/rendelés']" class="nav-link"><button
 					class="btn btn-danger btn-block btn-round">Rendelés</button></a>
 		</div>
-		<div id="kapcsolat">
+		<div>
 			<div class="container text-center contact">
 				<div class="row">
 					<div class="col-md-8 ml-auto mr-auto text-center">
@@ -103,11 +119,17 @@
 						</p>
 					</div>
 				</div>
-				<div class="contact-items">
-					<div><i class="fa fa-phone" style="color: green"></i>&nbsp;<a href="tel:+36303495477">(+36)30-349-54-77</a></div>
-					<div><i class="fa fa-facebook-official" style="color: #1877f2"></i>&nbsp;<a href="https://www.facebook.com/messages/t/102529678534761">Messenger üzenet</a></div>
-					<div><i class="fa fa-envelope" style="color: darkred"></i>&nbsp;<a href="mailto:stingerbaitboat@gmail.com">stingerbaitboat@gmail.com</a></div>
-					<div><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5387.314558117809!2d19.181329000000005!3d47.535535!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c4d82967c165%3A0x60c659ecbe07d092!2sBudapest%2C%20Patk%C3%B3szeg%20u.%204%2C%201162!5e0!3m2!1shu!2shu!4v1669390442955!5m2!1shu!2shu" width="320" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+				<div class="contact-items" id="kapcsolat">
+					<div><i class="fa fa-phone" style="color: green"></i>&nbsp;<a
+							href="tel:+36303495477">(+36)30-349-54-77</a></div>
+					<div><i class="fa fa-facebook-official" style="color: #1877f2"></i>&nbsp;<a
+							href="https://www.facebook.com/messages/t/102529678534761">Messenger üzenet</a></div>
+					<div><i class="fa fa-envelope" style="color: darkred"></i>&nbsp;<a
+							href="mailto:stingerbaitboat@gmail.com">stingerbaitboat@gmail.com</a></div>
+					<div><iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5387.314558117809!2d19.181329000000005!3d47.535535!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c4d82967c165%3A0x60c659ecbe07d092!2sBudapest%2C%20Patk%C3%B3szeg%20u.%204%2C%201162!5e0!3m2!1shu!2shu!4v1669390442955!5m2!1shu!2shu"
+							width="320" height="240" style="border:0;" allowfullscreen="" loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 				</div>
 			</div>
 		</div>

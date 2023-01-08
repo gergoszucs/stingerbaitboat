@@ -1,0 +1,20 @@
+<div *ngIf="!authenticated; else content" class="wrapper">
+    <div class="page-header section-dark">
+        <div class="content-center">
+            <div class="container">
+                <div class="form-group login-form">
+                    <input type="password" class="form-control" id="password" (change)="passwordUpdated($event)"
+                        placeholder="Jelszó" (keyup.enter)="login()" required
+                        [ngClass]="{'wrong-password': wrongPassword}">
+                    <div *ngIf="wrongPassword" class="invalid-password">
+                        <p>Hibás jelszó!</p>
+                    </div>
+                    <button class="btn btn-primary" (click)="login()">Belépés</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content>
+    <app-orders></app-orders>
+</ng-template>

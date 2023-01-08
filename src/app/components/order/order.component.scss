@@ -113,7 +113,7 @@ h5:not(.basket),
 	.row {
 		padding: 6px 0 0 10px;
 
-		.col-4 p{
+		.col-4 p {
 			margin-right: 10px;
 		}
 	}
@@ -123,6 +123,10 @@ h5:not(.basket),
 
 		.text-end h5 {
 			margin-right: 10px;
+		}
+
+		.text-start h5 {
+			margin-left: 0;
 		}
 	}
 

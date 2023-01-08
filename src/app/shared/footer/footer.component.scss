@@ -8,6 +8,19 @@
 		font-size: 12px;
 		text-transform: uppercase;
 		font-weight: 600;
+		padding: 0;
+	}
+
+	a {
+		color: #777777;
+		-webkit-font-smoothing: antialiased;
+		font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+		line-height: 1.6;
+		opacity: 0.8;
+		font-size: 12px;
+		text-transform: uppercase;
+		font-weight: 600;
+		text-decoration: none;
 	}
 
 	a:hover {

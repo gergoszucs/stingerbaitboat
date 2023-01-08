@@ -1,0 +1,55 @@
+.main {
+    margin-top: 10vh;
+}
+
+.table>:not(caption)>*>* {
+    border-bottom-width: 0px;
+}
+
+table tbody tr {
+    border: 1px solid lightgray;
+
+    p {
+        margin-bottom: 0 !important;
+    }
+}
+
+.fa {
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.order-row:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.edit-td {
+    div {
+        display: flex;
+        margin: 8px 16px 8px 8px;
+    }
+
+    .edit-title {
+        margin-right: 8px;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.new-order {
+    border: 1px solid lightgray;
+    padding: 12px;
+
+    >div {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: center;
+
+        p {
+            margin-right: 12px;
+            margin-bottom: 0;
+        }
+    }
+}

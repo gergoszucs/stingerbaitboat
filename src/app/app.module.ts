@@ -11,11 +11,11 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { AngularFireModule } from '@angular/fire/compat';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 
 @NgModule({
@@ -33,9 +33,9 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 		AppRoutingModule,
 		YouTubePlayerModule,
 		ScrollToModule.forRoot(),
-  provideFirebaseApp(() => initializeApp(environment.firebase)),
-  provideDatabase(() => getDatabase()),
-  provideFirestore(() => getFirestore())
+		AngularFireModule.initializeApp(environment.firebase, 'stinger'),
+		AngularFirestoreModule,
+		DpDatePickerModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

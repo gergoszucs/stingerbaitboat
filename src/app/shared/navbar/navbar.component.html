@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
 	<div class="container">
 		<div class="navbar-translate">
-			<img src="assets/img/fedexlogo.png" alt="Stinger Bait Boat">
+			<button class="logo-image" (click)="logoClicked()">
+				<img src="assets/img/fedexlogo.png" alt="Stinger Bait Boat">
+			</button>
 			<button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse"
 				data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false"
 				aria-label="Toggle navigation" (click)="sidebarToggle()">
@@ -12,14 +14,20 @@
 		</div>
 		<div class="navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
+				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/index']" fragment="hajok" class="nav-link">Hajók</a>
 				</li>
-				<li class="nav-item">
+				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/rendelés']" class="nav-link">Rendelés</a>
 				</li>
-				<li class="nav-item">
+				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/index']" fragment="kapcsolat" class="nav-link">Kapcsolat</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/rendelesek']" class="nav-link">Rendelések</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/keszlet']" class="nav-link">Készlet</a>
 				</li>
 			</ul>
 		</div>

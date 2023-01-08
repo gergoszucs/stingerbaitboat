@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from "@angular/router";
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollToService } from "@nicky-lenaers/ngx-scroll-to";
 
 let apiLoaded = false;
@@ -11,21 +12,41 @@ let apiLoaded = false;
 })
 export class BasicelementsComponent implements OnInit {
 	fragment: string;
+	screenWidth = 640;
+	screenHeight = 390;
 
-	constructor(router: Router, scrollToService: ScrollToService) {
+	constructor(router: Router, scrollToService: ScrollToService, config: NgbCarouselConfig) {
 		router.events.filter(event => event instanceof NavigationEnd)
 			.subscribe(event => {
 				const url = (event as NavigationEnd).url;
 				if (url.includes('#')) {
 					this.fragment = url.substring(url.indexOf('#'), url.length);
 					scrollToService.scrollTo({
-						target: this.fragment
+						target: this.fragment,
+						easing: 'easeOutElastic',
+						duration: 150
 					});
 				}
 			});
+
+
+		config.interval = 3000;
+		config.animation = true;
+		config.showNavigationArrows = true;
+		config.pauseOnHover = false;
+		config.pauseOnFocus = false;
+
+		let originalWidth = this.screenWidth;
+
+		if (window.innerWidth < this.screenWidth) {
+			this.screenWidth = window.innerWidth * 0.9;
+
+			let widthChange = this.screenWidth / originalWidth;
+			this.screenHeight *= widthChange;
+		}
 	}
 
-	ngOnInit () {
+	ngOnInit() {
 		if (!apiLoaded) {
 			// This code loads the IFrame Player API code asynchronously, according to the instructions at
 			// https://developers.google.com/youtube/iframe_api_reference#Getting_Started

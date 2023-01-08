@@ -1,0 +1,193 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="container">
+            <div class="text-center">
+                <h3>Folyamatban lévő rendelések</h3>
+            </div>
+            <div style="margin-top: 20px">
+                <p *ngIf="findActive(orders).length === 0; else activeOrders">Jelenleg nincs folyamatban lévő rendelés
+                </p>
+                <ng-template #activeOrders>
+                    <div class="table-responsive">
+                        <table class="table" style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-md-4">Név</th>
+                                    <th scope="col" class="col-md-4">Hajó</th>
+                                    <th scope="col" class="col-md-4">Rendelés</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let order of findActive(orders)">
+                                    <tr class="order-row" (click)="onView(order.id)">
+                                        <td>
+                                            <p>{{order.name}} </p>
+                                        </td>
+                                        <td>
+                                            <p>{{order.boat}}</p>
+                                        </td>
+                                        <td>
+                                            <p>{{order.orderDate | date:'yyyy-MM-dd'}} </p>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="expandedOrder === order.id">
+                                        <td colspan="3" class="edit-td">
+                                            <div>
+                                                <p class="edit-title"><strong>Név:</strong></p>
+                                                <p *ngIf="!orderToEdit" class="value">{{order.name}} </p>
+                                                <input *ngIf="orderToEdit" [value]="order.name"
+                                                    (keyup)="parseName($event)" />
+                                            </div>
+                                            <div>
+                                                <p class="edit-title"><strong>Hajó:</strong></p>
+                                                <p *ngIf="!orderToEdit" class="value">{{order.boat}} </p>
+                                                <input *ngIf="orderToEdit" [value]="order.boat"
+                                                    (keyup)="parseBoat($event)" />
+                                            </div>
+                                            <div>
+                                                <p class="edit-title"><strong>Rendelés:</strong></p>
+                                                <p *ngIf="!orderToEdit" class="value">{{order.orderDate |
+                                                    date:'yyyy-MM-dd'}} </p>
+                                                <dp-date-picker *ngIf="orderToEdit" theme="dp-material"
+                                                    [config]="config"
+                                                    [placeholder]="order.orderDate | date:'yyyy-MM-dd'"
+                                                    (onChange)="parseOrderDate($event)"></dp-date-picker>
+                                            </div>
+                                            <div class="order-actions">
+                                                <i *ngIf="!orderToEdit" class="fa fa-check" style="color: green"
+                                                    (click)="onFulfill(order)" data-toggle="tooltip"
+                                                    data-placement="top" title="Teljesítés"></i>
+                                                <i *ngIf="!orderToEdit" class="fa fa-pencil" style="color:orange"
+                                                    (click)="onEdit(order)" data-toggle="tooltip" data-placement="top"
+                                                    title="Szerkesztés"></i>
+                                                <i *ngIf="orderToEdit" class="fa fa-download" style="color:green"
+                                                    (click)="onSave()" data-toggle="tooltip" data-placement="top"
+                                                    title="Mentés"></i>
+                                                <i *ngIf="orderToEdit" class="fa fa-ban" style="color:orange"
+                                                    (click)="onCancel()" data-toggle="tooltip" data-placement="top"
+                                                    title="Elvetés"></i>
+                                                <i class="fa fa-trash" style="color:red" (click)="onDelete(order.id)"
+                                                    data-toggle="tooltip" data-placement="top" title="Törlés"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+
+
+
+
+                <div *ngIf="this.orderToCreate" class="new-order">
+                    <div class="text-center" style="display:block; margin: 0">
+                        <h3 style="margin: 0">Új rendelés felvétele</h3>
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Név:</strong></p>
+                        <input (keyup)="parseNewName($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Hajó:</strong></p>
+                        <input (keyup)="parseNewBoat($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Rendelés:</strong></p>
+                        <dp-date-picker theme="dp-material" [config]="config"
+                            (onChange)="parseNewOrderDate($event)"></dp-date-picker>
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Teljesítés:</strong></p>
+                        <dp-date-picker theme="dp-material" [config]="config"
+                            (onChange)="parseNewFulfilledDate($event)"></dp-date-picker>
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Garancia:</strong></p>
+                        <dp-date-picker theme="dp-material" [config]="config"
+                            (onChange)="parseNewWarrantyDate($event)"></dp-date-picker>
+                    </div>
+                    <div class="order-actions">
+                        <i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+                            data-placement="top" title="Mentés"></i>
+                        <i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+                            data-placement="top" title="Elvetés"></i>
+                    </div>
+                </div>
+                <i *ngIf="!this.orderToCreate" class="fa fa-plus" style="color:green ; font-size: 20px"
+                    (click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új rendelés"></i>
+
+
+
+
+                <div class="text-center">
+                    <h3>Teljesített rendelések</h3>
+                </div>
+                <div style="margin-top: 20px">
+                    <p *ngIf="findFulfilled(orders).length === 0; else fulfilledOrders">Jelenleg nincs teljesített
+                        rendelés
+                    </p>
+                    <ng-template #fulfilledOrders>
+                        <div class="table-responsive">
+                            <table class="table" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="col-md-4">Név</th>
+                                        <th scope="col" class="col-md-4">Hajó</th>
+                                        <th scope="col" class="col-md-4">Teljesítés</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let order of findFulfilled(orders)">
+                                        <tr class="order-row" (click)="onView(order.id)">
+                                            <td>
+                                                <p>{{order.name}} </p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.boat}}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.fulfilledDate | date:'yyyy-MM-dd'}} </p>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="expandedOrder === order.id">
+                                            <td colspan="3" class="edit-td">
+                                                <div>
+                                                    <p class="edit-title"><strong>Név:</strong></p>
+                                                    <p class="value">{{order.name}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Hajó:</strong></p>
+                                                    <p class="value">{{order.boat}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Rendelés:</strong></p>
+                                                    <p class="value">{{order.orderDate |
+                                                        date:'yyyy-MM-dd'}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Teljesítés:</strong></p>
+                                                    <p class="value">{{order.fulfilledDate |
+                                                        date:'yyyy-MM-dd'}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Garancia:</strong></p>
+                                                    <p class="value">{{order.warrantyDate |
+                                                        date:'yyyy-MM-dd'}} </p>
+                                                </div>
+                                                <div class="order-actions">
+                                                    <i class="fa fa-trash" style="color:red"
+                                                        (click)="onDelete(order.id)" data-toggle="tooltip"
+                                                        data-placement="top" title="Törlés"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
