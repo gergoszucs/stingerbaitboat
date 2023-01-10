@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MailService } from 'app/services/mail.service';
 
 @Component({
 	selector: 'app-order',
@@ -18,17 +19,17 @@ export class OrderComponent implements OnInit {
 	};
 
 	radar: Item = {
-		name: "Nem kérek",
+		name: "Nem kérem",
 		price: 0
 	};
 
 	autopilot: Item = {
-		name: "Nem kérek",
+		name: "Nem kérem",
 		price: 0
 	};
 
 	battery: Item = {
-		name: "Nem kérek",
+		name: "Nem kérem",
 		price: 0
 	};
 
@@ -51,8 +52,15 @@ export class OrderComponent implements OnInit {
 	seaweedChecked: boolean;
 
 	totalPrice: number;
+	name: string;
+	phone: string;
+	email: string;
+	address: string;
+	canSubmitOrder = false;
+	showSubmitError = false;
+	orderProcessed = false;
 
-	constructor() {
+	constructor(private mailService: MailService) {
 		this.totalPrice = this.boat.price + this.color.price + this.radar.price + this.autopilot.price
 			+ this.battery.price;
 	}
@@ -134,5 +142,59 @@ export class OrderComponent implements OnInit {
 	toggleSeaweed() {
 		this.seaweedChecked = !this.seaweedChecked;
 		this.recalculateTotalPrice();
+	}
+
+	nameUpdated(event) {
+		this.name = event.target.value;
+		this.checkIfCanSubmitOrder();
+	}
+
+	emailUpdated(event) {
+		this.email = event.target.value;
+		this.checkIfCanSubmitOrder();
+	}
+
+	addressUpdated(event) {
+		this.address = event.target.value;
+		this.checkIfCanSubmitOrder();
+	}
+
+	phoneUpdated(event) {
+		this.phone = event.target.value;
+		this.checkIfCanSubmitOrder();
+	}
+
+	order() {
+		if (!this.canSubmitOrder) {
+			this.showSubmitError = true;
+			return;
+		}
+
+		this.mailService.sendMail(
+			{
+				address: this.address,
+				autopilot: this.autopilot.name,
+				bag: this.bagChecked,
+				battery: this.battery.name,
+				boat: this.boat.name,
+				color: this.color.name,
+				email: this.email,
+				light: this.lightChecked,
+				name: this.name,
+				phone: this.phone,
+				price: this.totalPrice,
+				radar: this.radar.name,
+				seaweed: this.seaweedChecked,
+				fulfilledDate: '',
+				orderDate: new Date().toString(),
+				warrantyDate: ''
+			}
+		).finally(() => {
+			this.orderProcessed = true;
+		})
+	}
+
+	private checkIfCanSubmitOrder() {
+		this.canSubmitOrder = !!this.name && !!this.email && !!this.address && !!this.phone;
 	}
 }

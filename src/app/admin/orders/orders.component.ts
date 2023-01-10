@@ -91,6 +91,17 @@ export class OrdersComponent implements OnInit {
     onCreate() {
         this.isAdding = true;
         this.orderToCreate = {
+            address: '',
+            autopilot: '',
+            bag: false,
+            battery: '',
+            color: '',
+            email: '',
+            light: false,
+            phone: '',
+            price: 0,
+            radar: '',
+            seaweed: false,
             boat: '',
             fulfilledDate: '',
             name: '',
@@ -101,6 +112,17 @@ export class OrdersComponent implements OnInit {
 
     onSaveNew() {
         this.orderToCreate = {
+            address: this.orderToCreate.address,
+            autopilot: this.orderToCreate.autopilot,
+            bag: this.orderToCreate.bag,
+            battery: this.orderToCreate.battery,
+            color: this.orderToCreate.color,
+            email: this.orderToCreate.email,
+            light: this.orderToCreate.light,
+            phone: this.orderToCreate.phone,
+            price: this.orderToCreate.price,
+            radar: this.orderToCreate.radar,
+            seaweed: false,
             boat: this.orderToCreate.boat,
             fulfilledDate: this.orderToCreate.fulfilledDate.toString(),
             name: this.orderToCreate.name,

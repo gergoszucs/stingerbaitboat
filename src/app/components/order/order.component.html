@@ -189,7 +189,7 @@
 					<div class="grp">
 						<div class="row">
 							<div class="col-sm-2">
-								<h5>Nem kérek</h5>
+								<h5>Nem kérem</h5>
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadar" id="Radar nélkül"
@@ -231,10 +231,10 @@
 					<div class="grp">
 						<div class="row">
 							<div class="col-sm">
-								<h5>Nem kérek</h5>
+								<h5>Nem kérem</h5>
 								<p class="price">0 Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="boatPilot" id="Nem kérek"
+									<input class="form-check-input" type="radio" name="boatPilot" id="Nem kérem"
 										(change)="onAutopilotChange($event)" value="0" checked>
 								</div>
 							</div>
@@ -269,10 +269,10 @@
 					<div class="grp">
 						<div class="row">
 							<div class="col-sm">
-								<h5>Nem kérek</h5>
+								<h5>Nem kérem</h5>
 								<p class="price">0 Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="battery" id="Nem kérek"
+									<input class="form-check-input" type="radio" name="battery" id="Nem kérem"
 										(change)="onBatteryChange($event)" value="0" checked>
 								</div>
 							</div>
@@ -451,19 +451,22 @@
 					</div>
 					<div>
 						<br>
-						<p>A rendelés véglegesítéséhez kérlek add meg az alábbi adatokat.</p>
+						<p *ngIf="!orderProcessed">A rendelés véglegesítéséhez kérlek add meg az alábbi adatokat.</p>
 
-						<div class="form-wrapper">
+						<div *ngIf="!orderProcessed; else orderComplete" class="form-wrapper">
 							<form>
 								<div class="form-group">
 									<label for="nameInput">Név</label>
 									<input type="text" class="form-control" id="nameInput"
-										placeholder="Add meg a nevedet" required>
+										[ngClass]="{'invalid-input' : showSubmitError && !name}"
+										(keyup)="nameUpdated($event)" placeholder="Add meg a nevedet" required>
 								</div>
 								<div class="form-group">
 									<label for="emailInput">Email</label>
 									<input type="email" class="form-control" id="emailInput"
-										aria-describedby="emailHelp" placeholder="Add meg az email címed" required>
+										[ngClass]="{'invalid-input' : showSubmitError && !email}"
+										(keyup)="emailUpdated($event)" aria-describedby="emailHelp"
+										placeholder="Add meg az email címed" required>
 									<small id="emailHelp" class="form-text text-muted">Kérlek ellenőrizd a helyességét,
 										ide
 										fogjuk küldeni a további tudnivalókat.</small>
@@ -471,21 +474,33 @@
 								<div class="form-group">
 									<label for="addressInput">Szállítási cím</label>
 									<input type="text" class="form-control" id="addressInput"
-										placeholder="Add meg hová küldhetjük a hajót" required>
+										[ngClass]="{'invalid-input' : showSubmitError && !address}"
+										(keyup)="addressUpdated($event)" placeholder="Add meg hová küldhetjük a hajót"
+										required>
 								</div>
 								<div class="form-check">
-									<label for="emailInput">Telefon</label>
+									<label for="phoneInput">Telefon</label>
 									<input type="tel" class="form-control" id="phoneInput"
-										placeholder="Add meg a telefon számod" required>
+										[ngClass]="{'invalid-input' : showSubmitError && !phone}"
+										(keyup)="phoneUpdated($event)" placeholder="Add meg a telefon számod" required>
 								</div>
 								<div class="button-wrapper">
-									<button type="submit"
-										class="btn btn-danger btn-block btn-round nav-link">Rendelés</button>
+									<span class="submit-error" *ngIf="showSubmitError && !canSubmitOrder">
+										Kérlek add meg a fenti adatokat!</span>
+									<div><button type="submit" (click)="order()"
+											[ngClass]="{'button-inactive' : !canSubmitOrder}"
+											class="btn btn-danger btn-block btn-round nav-link">Rendelés</button></div>
 								</div>
 							</form>
 						</div>
+						<ng-template #orderComplete>
+							<div>
+								<p class="complete-order">Köszönjük a megrendelést, elküldtük a megerősítő emailt, amely
+									minden fontos információt tartalmaz.</p>
+							</div>
+						</ng-template>
 						<br>
-						<div class="caveat">
+						<div *ngIf="!orderProcessed" class="caveat">
 							<p>A fizetés mindig két részletben történik, az első részletet előre kell
 								utalni!</p>
 							<p>A második részlet minden esetben 60 ezer forint, amit az átvételnél kell
