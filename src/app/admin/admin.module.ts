@@ -8,6 +8,9 @@ import { AdminComponent } from './admin.component';
 import { OrdersComponent } from './orders/orders.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { AdminPhotoComponent } from './adminphoto/adminphoto.component';
+import { AdminVideoComponent } from './adminvideo/adminvideo.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const routes: Routes = [
     { path: '', component: LoginComponent }
@@ -18,6 +21,8 @@ const routes: Routes = [
         LoginComponent,
         AdminComponent,
         OrdersComponent,
+        AdminPhotoComponent,
+        AdminVideoComponent,
         InventoryComponent
     ],
     imports: [
@@ -25,7 +30,8 @@ const routes: Routes = [
         CommonModule,
         NgbModule,
         RouterModule.forChild(routes),
-        DpDatePickerModule
+        DpDatePickerModule,
+        YouTubePlayerModule
     ]
 })
 export class AdminModule { }

@@ -31,45 +31,8 @@
                                         </td>
                                     </tr>
                                     <tr *ngIf="expandedOrder === order.id">
-                                        <td colspan="3" class="edit-td">
-                                            <div>
-                                                <p class="edit-title"><strong>Név:</strong></p>
-                                                <p *ngIf="!orderToEdit" class="value">{{order.name}} </p>
-                                                <input *ngIf="orderToEdit" [value]="order.name"
-                                                    (keyup)="parseName($event)" />
-                                            </div>
-                                            <div>
-                                                <p class="edit-title"><strong>Hajó:</strong></p>
-                                                <p *ngIf="!orderToEdit" class="value">{{order.boat}} </p>
-                                                <input *ngIf="orderToEdit" [value]="order.boat"
-                                                    (keyup)="parseBoat($event)" />
-                                            </div>
-                                            <div>
-                                                <p class="edit-title"><strong>Rendelés:</strong></p>
-                                                <p *ngIf="!orderToEdit" class="value">{{order.orderDate |
-                                                    date:'yyyy-MM-dd'}} </p>
-                                                <dp-date-picker *ngIf="orderToEdit" theme="dp-material"
-                                                    [config]="config"
-                                                    [placeholder]="order.orderDate | date:'yyyy-MM-dd'"
-                                                    (onChange)="parseOrderDate($event)"></dp-date-picker>
-                                            </div>
-                                            <div class="order-actions">
-                                                <i *ngIf="!orderToEdit" class="fa fa-check" style="color: green"
-                                                    (click)="onFulfill(order)" data-toggle="tooltip"
-                                                    data-placement="top" title="Teljesítés"></i>
-                                                <i *ngIf="!orderToEdit" class="fa fa-pencil" style="color:orange"
-                                                    (click)="onEdit(order)" data-toggle="tooltip" data-placement="top"
-                                                    title="Szerkesztés"></i>
-                                                <i *ngIf="orderToEdit" class="fa fa-download" style="color:green"
-                                                    (click)="onSave()" data-toggle="tooltip" data-placement="top"
-                                                    title="Mentés"></i>
-                                                <i *ngIf="orderToEdit" class="fa fa-ban" style="color:orange"
-                                                    (click)="onCancel()" data-toggle="tooltip" data-placement="top"
-                                                    title="Elvetés"></i>
-                                                <i class="fa fa-trash" style="color:red" (click)="onDelete(order.id)"
-                                                    data-toggle="tooltip" data-placement="top" title="Törlés"></i>
-                                            </div>
-                                        </td>
+                                        <ng-container *ngTemplateOutlet="editableRow;context:{order: order}">
+                                        </ng-container>
                                     </tr>
                                 </ng-container>
                             </tbody>
@@ -89,8 +52,52 @@
                         <input (keyup)="parseNewName($event)" />
                     </div>
                     <div>
+                        <p class="edit-title"><strong>Telefon:</strong></p>
+                        <input (keyup)="parseNewPhone($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Email:</strong></p>
+                        <input (keyup)="parseNewEmail($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Cím:</strong></p>
+                        <input (keyup)="parseNewAddress($event)" />
+                    </div>
+                    <div>
                         <p class="edit-title"><strong>Hajó:</strong></p>
                         <input (keyup)="parseNewBoat($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Ár:</strong></p>
+                        <input type="number" (keyup)="parseNewPrice($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Szín:</strong></p>
+                        <input (keyup)="parseNewColor($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Radar:</strong></p>
+                        <input (keyup)="parseNewRadar($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Autópilóta:</strong></p>
+                        <input (keyup)="parseNewAutopilot($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Akkumulátor:</strong></p>
+                        <input (keyup)="parseNewBattery($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Hínárvédő:</strong></p>
+                        <input type="checkbox" (change)="parseNewSeaweed($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Táska:</strong></p>
+                        <input type="checkbox" (change)="parseNewBag($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Reflektor:</strong></p>
+                        <input type="checkbox" (change)="parseNewLight($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Rendelés:</strong></p>
@@ -106,6 +113,15 @@
                         <p class="edit-title"><strong>Garancia:</strong></p>
                         <dp-date-picker theme="dp-material" [config]="config"
                             (onChange)="parseNewWarrantyDate($event)"></dp-date-picker>
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Első éves karbantartás:</strong></p>
+                        <input type="checkbox" (change)="parseNewFirstWarranty($event)" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Második éves karbantartás:</strong>
+                        </p>
+                        <input type="checkbox" (change)="parseNewSecondWarranty($event)" />
                     </div>
                     <div class="order-actions">
                         <i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
@@ -151,34 +167,87 @@
                                             </td>
                                         </tr>
                                         <tr *ngIf="expandedOrder === order.id">
+                                            <ng-container *ngTemplateOutlet="editableRow;context:{order: order}">
+                                            </ng-container>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </div>
+
+
+
+
+                <div class="text-center">
+                    <h3>Lejárt garanciás rendelések</h3>
+                </div>
+                <div style="margin-top: 20px">
+                    <p *ngIf="findWarrantyIssues(orders).length === 0; else warrantyIssues">Jelenleg nincs lejárt
+                        garanciájú rendelés
+                    </p>
+                    <ng-template #warrantyIssues>
+                        <div class="table-responsive">
+                            <table class="table" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="col-md-4">Név</th>
+                                        <th scope="col" class="col-md-4">Hajó</th>
+                                        <th scope="col" class="col-md-4">Teljesítés</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let order of findWarrantyIssues(orders)">
+                                        <tr class="order-row" (click)="onViewWarr(order.id)">
+                                            <td>
+                                                <p>{{order.name}} </p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.boat}}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.fulfilledDate | date:'yyyy-MM-dd'}} </p>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="expandedWarrantyOrder === order.id">
                                             <td colspan="3" class="edit-td">
                                                 <div>
                                                     <p class="edit-title"><strong>Név:</strong></p>
-                                                    <p class="value">{{order.name}} </p>
+                                                    <p class="value">{{order.name}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Telefon:</strong></p>
+                                                    <p class="value">{{order.phone}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Email:</strong></p>
+                                                    <p class="value">{{order.email}}</p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Cím:</strong></p>
+                                                    <p class="value">{{order.address}}</p>
                                                 </div>
                                                 <div>
                                                     <p class="edit-title"><strong>Hajó:</strong></p>
-                                                    <p class="value">{{order.boat}} </p>
+                                                    <p class="value">{{order.boat}}</p>
                                                 </div>
-                                                <div>
-                                                    <p class="edit-title"><strong>Rendelés:</strong></p>
-                                                    <p class="value">{{order.orderDate |
-                                                        date:'yyyy-MM-dd'}} </p>
+                                                <div *ngIf="firstYearWarrantyExpired(order)">
+                                                    <p class="edit-title"><strong>Első éves karbantartás:</strong></p>
+                                                    <p class="value">Eltelt 1 év
+                                                        a rendelés teljesítése óta.</p>
+                                                    <i class="fa fa-check" style="color: green; margin-left: 8px"
+                                                        (click)="onFirstWarrantyOk(order)" data-toggle="tooltip"
+                                                        data-placement="top" title="Átvizsgálva"></i>
                                                 </div>
-                                                <div>
-                                                    <p class="edit-title"><strong>Teljesítés:</strong></p>
-                                                    <p class="value">{{order.fulfilledDate |
-                                                        date:'yyyy-MM-dd'}} </p>
-                                                </div>
-                                                <div>
-                                                    <p class="edit-title"><strong>Garancia:</strong></p>
-                                                    <p class="value">{{order.warrantyDate |
-                                                        date:'yyyy-MM-dd'}} </p>
-                                                </div>
-                                                <div class="order-actions">
-                                                    <i class="fa fa-trash" style="color:red"
-                                                        (click)="onDelete(order.id)" data-toggle="tooltip"
-                                                        data-placement="top" title="Törlés"></i>
+                                                <div *ngIf="secondYearWarrantyExpired(order)">
+                                                    <p class="edit-title"><strong>Második éves karbantartás:</strong>
+                                                    </p>
+                                                    <p *ngIf="secondYearWarrantyExpired(order)" class="value">Eltelt 2
+                                                        év a rendelés teljesítése óta.</p>
+                                                    <i class="fa fa-check" style="color: green"
+                                                        (click)="onSecondWarrantyOk(order)" data-toggle="tooltip"
+                                                        data-placement="top" title="Átvizsgálva"></i>
                                                 </div>
                                             </td>
                                         </tr>
@@ -191,3 +260,119 @@
             </div>
         </div>
     </div>
+
+    <ng-template #editableRow let-order="order">
+        <td colspan="3" class="edit-td">
+            <div>
+                <p class="edit-title"><strong>Név:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.name}}</p>
+                <input *ngIf="orderToEdit" [value]="order.name" (keyup)="parseName($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Telefon:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.phone}}</p>
+                <input *ngIf="orderToEdit" [value]="order.phone" (keyup)="parsePhone($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Email:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.email}}</p>
+                <input *ngIf="orderToEdit" [value]="order.email" (keyup)="parseEmail($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Cím:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.address}}</p>
+                <input *ngIf="orderToEdit" [value]="order.address" (keyup)="parseAddress($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Hajó:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.boat}}</p>
+                <input *ngIf="orderToEdit" [value]="order.boat" (keyup)="parseBoat($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Ár:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.price | number:'1.0-0'}}
+                    Ft</p>
+                <input *ngIf="orderToEdit" [value]="order.price" (keyup)="parsePrice($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Szín:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.color}}</p>
+                <input *ngIf="orderToEdit" [value]="order.color" (keyup)="parseColor($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Radar:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.radar}} </p>
+                <input *ngIf="orderToEdit" [value]="order.radar" (keyup)="parseRadar($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Autopilot:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.autopilot}}</p>
+                <input *ngIf="orderToEdit" [value]="order.autopilot" (keyup)="parseAutopilot($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Akkumulátor:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{order.battery}}</p>
+                <input *ngIf="orderToEdit" [value]="order.battery" (keyup)="parseBattery($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Hínárvédő:</strong></p>
+                <input [disabled]="!orderToEdit" [checked]="order.seaweed" type="checkbox"
+                    (change)="parseSeaweed($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Táska:</strong></p>
+                <input [disabled]="!orderToEdit" [checked]="order.bag" type="checkbox" (change)="parseBag($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Reflektor:</strong></p>
+                <input [disabled]="!orderToEdit" [checked]="order.light" type="checkbox"
+                    (change)="parseLight($event)" />
+            </div>
+            <div>
+                <p class="edit-title"><strong>Rendelés:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{ order.orderDate !== null ?
+                    (order.orderDate | date:'yyyy-MM-dd') : "-"}} </p>
+                <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.orderDate !== null ?
+                    (order.orderDate | date:'yyyy-MM-dd') : '-'" (onChange)="parseOrderDate($event)"></dp-date-picker>
+            </div>
+            <div>
+                <p class="edit-title"><strong>Teljesítés:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{ order.fulfilledDate !== null ?
+                    (order.fulfilledDate | date:'yyyy-MM-dd') : "-"}}</p>
+                <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.fulfilledDate !== null ?
+                    (order.fulfilledDate | date:'yyyy-MM-dd') : '-'"
+                    (onChange)="parseFulfilledDate($event)"></dp-date-picker>
+            </div>
+            <div>
+                <p class="edit-title"><strong>Garancia:</strong></p>
+                <p *ngIf="!orderToEdit" class="value">{{ order.warrantyDate !== null ?
+                    (order.warrantyDate | date:'yyyy-MM-dd') : "-"}}</p>
+                <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.warrantyDate !== null ?
+                    (order.warrantyDate | date:'yyyy-MM-dd') : '-'"
+                    (onChange)="parseWarrantyDate($event)"></dp-date-picker>
+            </div>
+            <div *ngIf="order.fulfilledDate">
+                <p class="edit-title"><strong>Első éves karbantartás:</strong></p>
+                <input [disabled]="!orderToEdit" [checked]="order.warrantyFirst" type="checkbox"
+                    (change)="parseFirstWarranty($event)" />
+            </div>
+            <div *ngIf="order.fulfilledDate">
+                <p class="edit-title"><strong>Második éves karbantartás:</strong>
+                </p>
+                <input [disabled]="!orderToEdit" [checked]="order.warrantySecond" type="checkbox"
+                    (change)="parseSecondWarranty($event)" />
+            </div>
+            <div class="order-actions">
+                <i *ngIf="!orderToEdit" class="fa fa-check" style="color: green" (click)="onFulfill(order)"
+                    data-toggle="tooltip" data-placement="top" title="Teljesítés"></i>
+                <i *ngIf="!orderToEdit" class="fa fa-pencil" style="color:orange" (click)="onEdit(order)"
+                    data-toggle="tooltip" data-placement="top" title="Szerkesztés"></i>
+                <i *ngIf="orderToEdit" class="fa fa-download" style="color:green" (click)="onSave()"
+                    data-toggle="tooltip" data-placement="top" title="Mentés"></i>
+                <i *ngIf="orderToEdit" class="fa fa-ban" style="color:orange" (click)="onCancel()" data-toggle="tooltip"
+                    data-placement="top" title="Elvetés"></i>
+                <i class="fa fa-trash" style="color:red" (click)="onDelete(order.id)" data-toggle="tooltip"
+                    data-placement="top" title="Törlés"></i>
+            </div>
+        </td>
+    </ng-template>

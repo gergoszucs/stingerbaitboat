@@ -16,4 +16,6 @@ interface Order {
     orderDate: Date | string;
     fulfilledDate: Date | string;
     warrantyDate: Date | string;
+    warrantyFirst?: boolean;
+    warrantySecond?: boolean;
 }

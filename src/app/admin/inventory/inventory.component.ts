@@ -25,6 +25,10 @@ export class InventoryComponent implements OnInit {
         });
     }
 
+    sortBy(prop: string) {
+        return this.items.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+    }
+
     isBeingEdited(id: string) {
         return id === this.itemToEdit?.id;
     }
@@ -54,37 +58,52 @@ export class InventoryComponent implements OnInit {
         this.isAdding = true;
         this.itemToCreate = {
             name: '',
-            count: 0
+            belugaReq: 0,
+            count: 0,
+            threshold: 0
         };
     }
 
     onSaveNew() {
         this.itemToCreate = {
             name: this.itemToCreate.name,
-            count: this.itemToCreate.count
+            belugaReq: this.itemToCreate.belugaReq,
+            count: this.itemToCreate.count,
+            threshold: this.itemToCreate.threshold
         }
 
         this.inventoryService.create(this.itemToCreate);
-        this.inventoryService = undefined;
     }
 
     onCancelNew() {
         this.itemToCreate = undefined;
     }
 
-    parseName(event: any) {
-        this.itemToEdit.name = event.target.value;
+    parseBelugaCount(event: any) {
+        this.itemToEdit.belugaReq = event.target.value;
     }
 
     parseCount(event: any) {
         this.itemToEdit.count = event.target.value;
     }
 
+    parseThreshold(event: any) {
+        this.itemToEdit.threshold = event.target.value;
+    }
+
     parseNewName(event: any) {
         this.itemToCreate.name = event.target.value;
     }
 
+    parseNewBelugaCount(event: any) {
+        this.itemToCreate.belugaReq = event.target.value;
+    }
+
     parseNewCount(event: any) {
         this.itemToCreate.count = event.target.value;
+    }
+
+    parseNewThreshold(event: any) {
+        this.itemToCreate.threshold = event.target.value;
     }
 }

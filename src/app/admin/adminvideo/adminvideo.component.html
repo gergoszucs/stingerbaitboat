@@ -1,0 +1,32 @@
+<div class="wrapper">
+	<div class="main">
+		<div class="container">
+			<div class="text-center">
+				<h3>Videók</h3>
+			</div>
+			<div *ngIf="this.videoToCreate" class="new-item">
+				<div class="edit-div">
+					<p class="edit-title"><strong>Id:</strong></p>
+					<input style="width:250px" (keyup)="parseVideo($event)" />
+					<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+						data-placement="top" title="Mentés"></i>
+					<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+						data-placement="top" title="Elvetés"></i>
+				</div>
+			</div>
+			<i *ngIf="!this.videoToCreate" class="fa fa-plus" style="color:green ; font-size: 20px; margin-bottom: 20px"
+				(click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új videó"></i>
+			<div class="video-gallery">
+				<ng-container *ngFor="let video of videos">
+					<div class="video-wrapper">
+						<youtube-player [videoId]="video.url" suggestedQuality="highres" [height]="screenHeight"
+							[width]="screenWidth">
+						</youtube-player>
+						<i class="fa fa-trash" style="color:red" (click)="onDelete(video.id)" data-toggle="tooltip"
+							data-placement="top" title="Törlés"></i>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+</div>

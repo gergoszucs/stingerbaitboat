@@ -22,4 +22,8 @@ export class InventoryService {
     delete(id: string) {
         this.firestore.doc('inventory/' + id).delete();
     }
+
+    getBoatParts() {
+        return this.firestore.collection('boat').snapshotChanges();
+    }
 }

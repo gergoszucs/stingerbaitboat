@@ -10,15 +10,23 @@ import { OrdersComponent } from './admin/orders/orders.component';
 import { InventoryComponent } from './admin/inventory/inventory.component';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
+import { PhotoComponent } from './components/photo/photo.component';
+import { AdminPhotoComponent } from './admin/adminphoto/adminphoto.component';
+import { AdminVideoComponent } from './admin/adminvideo/adminvideo.component';
+import { VideoComponent } from './components/video/video.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'index', pathMatch: 'full' },
 	{ path: 'index', component: ComponentsComponent },
 	{ path: 'adatkezeles', component: PrivacyComponent },
-	{ path: 'rendelés', component: OrderComponent },
+	{ path: 'rendeles', component: OrderComponent },
+	{ path: 'kepek', component: PhotoComponent },
+	{ path: 'videok', component: VideoComponent },
 	{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-	{ path: 'admin/rendelesek', component: OrdersComponent /*, canActivate: [AuthGuard]*/ },
-	{ path: 'admin/keszlet', component: InventoryComponent, /*canActivate: [AuthGuard]*/ }
+	{ path: 'admin/rendelesek', component: OrdersComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/keszlet', component: InventoryComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/kepek', component: AdminPhotoComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/videok', component: AdminVideoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -26,7 +34,6 @@ const routes: Routes = [
 		CommonModule,
 		BrowserModule,
 		RouterModule.forRoot(routes, {
-			useHash: true,
 			scrollPositionRestoration: 'enabled'
 		})
 	],

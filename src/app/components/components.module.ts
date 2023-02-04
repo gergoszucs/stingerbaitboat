@@ -11,6 +11,9 @@ import { ComponentsComponent } from './components.component';
 import { OrderComponent } from "./order/order.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { PhotoComponent } from './photo/photo.component';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
 	imports: [
@@ -20,13 +23,16 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 		NouisliderModule,
 		RouterModule,
 		YouTubePlayerModule,
-		JwBootstrapSwitchNg2Module
+		JwBootstrapSwitchNg2Module,
+		NgImageFullscreenViewModule
 	],
 	declarations: [
 		ComponentsComponent,
 		BasicelementsComponent,
 		OrderComponent,
-		PrivacyComponent
+		PrivacyComponent,
+		PhotoComponent,
+		VideoComponent
 	],
 	exports: [ComponentsComponent]
 })

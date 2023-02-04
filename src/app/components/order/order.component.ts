@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from 'app/services/inventory.service';
 import { MailService } from 'app/services/mail.service';
+import { OrderService } from 'app/services/order.service';
 
 @Component({
 	selector: 'app-order',
@@ -8,6 +10,8 @@ import { MailService } from 'app/services/mail.service';
 })
 
 export class OrderComponent implements OnInit {
+	inventoryItems: InventoryItem[] = [];
+
 	boat: Item = {
 		name: "Beluga Basic",
 		price: 250000
@@ -37,19 +41,19 @@ export class OrderComponent implements OnInit {
 		name: "Hajó és távírányító táska",
 		price: 30000
 	}
-	bagChecked: boolean;
+	bagChecked = false;
 
 	light: Item = {
 		name: "Reflektor",
 		price: 15000
 	}
-	lightChecked: boolean;
+	lightChecked = false;
 
 	seaweed: Item = {
 		name: "Hínárvédő",
 		price: 7000
 	}
-	seaweedChecked: boolean;
+	seaweedChecked = false;
 
 	totalPrice: number;
 	name: string;
@@ -60,12 +64,21 @@ export class OrderComponent implements OnInit {
 	showSubmitError = false;
 	orderProcessed = false;
 
-	constructor(private mailService: MailService) {
+	constructor(private mailService: MailService, private orderService: OrderService, private inventoryService: InventoryService) {
 		this.totalPrice = this.boat.price + this.color.price + this.radar.price + this.autopilot.price
 			+ this.battery.price;
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.inventoryService.getAll().subscribe(data => {
+			this.inventoryItems = data.map(e => {
+				return {
+					id: e.payload.doc.id,
+					...e.payload.doc.data() as InventoryItem
+				};
+			});
+		});
+	}
 
 	recalculateTotalPrice() {
 		this.totalPrice = this.boat.price + this.color.price + this.radar.price + this.autopilot.price
@@ -170,31 +183,115 @@ export class OrderComponent implements OnInit {
 			return;
 		}
 
-		this.mailService.sendMail(
-			{
-				address: this.address,
-				autopilot: this.autopilot.name,
-				bag: this.bagChecked,
-				battery: this.battery.name,
-				boat: this.boat.name,
-				color: this.color.name,
-				email: this.email,
-				light: this.lightChecked,
-				name: this.name,
-				phone: this.phone,
-				price: this.totalPrice,
-				radar: this.radar.name,
-				seaweed: this.seaweedChecked,
-				fulfilledDate: '',
-				orderDate: new Date().toString(),
-				warrantyDate: ''
-			}
-		).finally(() => {
-			this.orderProcessed = true;
-		})
+		var order = {
+			address: this.address,
+			autopilot: this.autopilot.name,
+			bag: this.bagChecked,
+			battery: this.battery.name,
+			boat: this.boat.name,
+			color: this.color.name,
+			email: this.email,
+			light: this.lightChecked,
+			name: this.name,
+			phone: this.phone,
+			price: this.totalPrice,
+			radar: this.radar.name,
+			seaweed: this.seaweedChecked,
+			fulfilledDate: '',
+			orderDate: new Date().toString(),
+			warrantyDate: ''
+		};
+
+		this.updateInventoryOnPurchase(order);
+
+		// this.mailService.sendMail(order).finally(() => {
+		// 	this.orderProcessed = true;
+		// 	this.updateInventoryOnPurchase(order);
+		// 	this.orderService.create(order);
+		// })
 	}
 
 	private checkIfCanSubmitOrder() {
 		this.canSubmitOrder = !!this.name && !!this.email && !!this.address && !!this.phone;
+	}
+
+	private updateInventoryOnPurchase(order: Order) {
+		let lowCountItems: InventoryItem[] = [];
+
+		this.inventoryItems.forEach(inventoryItem => {
+			if (inventoryItem.belugaReq > 0) {
+				this.updateItem(inventoryItem.name, inventoryItem.belugaReq, lowCountItems);
+			}
+		});
+
+		// Optional parts
+		if (order.boat.includes("Basic")) {
+			this.updateItem("200W", 1, lowCountItems);
+		}
+		if (order.boat.includes("Medium")) {
+			this.updateItem("1600W", 1, lowCountItems);
+		}
+		if (order.boat.includes("Max")) {
+			this.updateItem("2000W", 1, lowCountItems);
+		}
+
+		if (order.seaweed) {
+			this.updateItem("Hínárvédő", 2, lowCountItems);
+		}
+		if (order.bag) {
+			this.updateItem("táska", 1, lowCountItems);
+		}
+		if (order.light) {
+			this.updateItem("Reflektor", 1, lowCountItems);
+		}
+
+		if (order.battery.includes("5000")) {
+			this.updateItem("5000", 1, lowCountItems);
+		}
+		if (order.battery.includes("6200")) {
+			this.updateItem("6200", 1, lowCountItems);
+		}
+		if (order.battery.includes("9500")) {
+			this.updateItem("9500", 1, lowCountItems);
+		}
+
+		if (lowCountItems.length > 0) {
+			this.mailService.inventoryThresholdReached(lowCountItems);
+		}
+
+		// this.inventoryService.getBoatParts().subscribe(data => {
+		// 	let parts = data.map(e => {
+		// 		return {
+		// 			id: e.payload.doc.id,
+		// 			parts: [e.payload.doc.data()]
+		// 		};
+		// 	});
+
+		// 	let boat = parts.find(p => p.id === boatType)
+
+		// 	if (!boat) {
+		// 		return;
+		// 	}
+
+		// 	let itemMap = boat.parts[0] as any;
+
+		// 	// Fix parts
+		// 	for (const item in itemMap) {
+		// 		this.updateItem(item, itemMap[item], lowCountItems);
+		// 	}
+		// });
+	}
+
+	private updateItem(name: string, required: number, lowCountItems: InventoryItem[]) {
+		const matchingItem = this.inventoryItems.find(i => i.name.includes(name));
+		if (matchingItem) {
+			matchingItem.count -= required;
+
+			if (matchingItem.count < matchingItem.threshold) {
+				lowCountItems.push(matchingItem);
+			}
+
+			this.inventoryService.update(matchingItem);
+		}
 	}
 }

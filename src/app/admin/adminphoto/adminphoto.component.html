@@ -1,0 +1,29 @@
+<div class="wrapper">
+	<div class="main">
+		<div class="container">
+			<div class="text-center">
+				<h3>Képek</h3>
+			</div>
+			<div *ngIf="this.photoToCreate" class="new-item">
+				<div class="edit-div">
+					<p class="edit-title"><strong>Id:</strong></p>
+					<input style="width:250px" (keyup)="parsePhoto($event)" />
+					<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+						data-placement="top" title="Mentés"></i>
+					<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+						data-placement="top" title="Elvetés"></i>
+				</div>
+
+			</div>
+			<i *ngIf="!this.photoToCreate" class="fa fa-plus" style="color:green ; font-size: 20px; margin-bottom: 20px"
+				(click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új kép"></i>
+			<ul class="image-gallery">
+				<ng-container *ngFor="let photo of photos">
+					<li>
+						<img [src]="getFullUrl(photo.url)" (click)="onDelete(photo.id)" />
+					</li>
+				</ng-container>
+			</ul>
+		</div>
+	</div>
+</div>

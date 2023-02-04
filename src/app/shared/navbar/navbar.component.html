@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="navbar-translate">
 			<button class="logo-image" (click)="logoClicked()">
-				<img src="assets/img/fedexlogo.png" alt="Stinger Bait Boat">
+				<img src="assets/img/stinger-logo.png" alt="Stinger Bait Boat">
 			</button>
 			<button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse"
 				data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -14,11 +14,23 @@
 		</div>
 		<div class="navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav ml-auto">
-				<li *ngIf="!isAdmin" class="nav-item">
-					<a [routerLink]="['/index']" fragment="hajok" class="nav-link">Hajók</a>
+				<li *ngIf="!isAdmin" class="nav-item dropdown" ngbDropdown>
+					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Hajók</a>
+					<ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Basic</a></li>
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Medium</a></li>
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Max</a></li>
+					</ul>
 				</li>
 				<li *ngIf="!isAdmin" class="nav-item">
-					<a [routerLink]="['/rendelés']" class="nav-link">Rendelés</a>
+					<a [routerLink]="['/rendeles']" class="nav-link">Rendelés</a>
+				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
+					<a [routerLink]="['/kepek']" class="nav-link">Képek</a>
+				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
+					<a [routerLink]="['/videok']" class="nav-link">Videók</a>
 				</li>
 				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/index']" fragment="kapcsolat" class="nav-link">Kapcsolat</a>
@@ -28,6 +40,12 @@
 				</li>
 				<li *ngIf="isAdmin" class="nav-item">
 					<a [routerLink]="['/admin/keszlet']" class="nav-link">Készlet</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/kepek']" class="nav-link">Képek</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/videok']" class="nav-link">Videók</a>
 				</li>
 			</ul>
 		</div>

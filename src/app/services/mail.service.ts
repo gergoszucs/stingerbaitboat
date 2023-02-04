@@ -1,4 +1,4 @@
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -6,9 +6,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     providedIn: 'root'
 })
 export class MailService {
-    constructor(private firestore: AngularFirestore, private decimalPipe: DecimalPipe) { }
+    constructor(private firestore: AngularFirestore, private decimalPipe: DecimalPipe, private datePipe: DatePipe) { }
 
     public sendMail(order: Order) {
+        var expectedFullfillmentDate = new Date(order.orderDate);
+        expectedFullfillmentDate.setDate(expectedFullfillmentDate.getDate() + 45)
+
         return this.firestore.collection('mail').add({
             to: order.email,
             message: {
@@ -52,7 +55,7 @@ export class MailService {
               
               <p>Személyes, ingyenes átvétel helye: 1162 Budapest, Patkószeg utca 4. Lehetőség szerint a Lupa tavon együtt ki is próbáljuk a hajót. </p>
               
-              <p>Rendelés várható elkészülése: 2023.03.</p>
+              <p>Rendelés várható elkészülése: ${this.datePipe.transform(expectedFullfillmentDate, 'yyyy-MM-dd')}.</p>
 
               <p>Rendelés összege: ${this.decimalPipe.transform(order.price, '1.0-0') + " Ft"}</p>
 
@@ -80,4 +83,27 @@ export class MailService {
             },
         });
     }
+
+    public inventoryThresholdReached(items: InventoryItem[]) {
+        let itemList = "";
+
+        items.forEach(item => {
+            itemList += `<li><strong>${this.capitalize(item.name)}:</strong> ${item.count} <i>(határérték: ${item.threshold})</i></li>`
+        });
+
+        return this.firestore.collection('mail').add({
+            to: 'gergobenceszucs@gmail.com',
+            message: {
+                subject: "Alkatrész hiány",
+                html: `
+                <p>A legutóbbi rendelés után az alábbi alkatrészek a beállított határérték alá estek.</p>
+                
+                <ul>
+                    ${itemList}
+                </ul>`,
+            },
+        });
+    }
+
+    private capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 }

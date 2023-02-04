@@ -35,7 +35,7 @@ ngb-carousel {
 }
 
 .boat-common {
-	margin-top: 12px;
+	margin-top: 32px;
 
 	i {
 		margin-right: 12px;
@@ -72,6 +72,11 @@ ngb-carousel {
 	margin-bottom: 24px;
 }
 
+.sbb-title {
+	font-family: 'Black Rose', sans-serif;
+	margin: 0 0 22px 0;
+}
+
 .order {
 	display: flex;
 	justify-content: center;
@@ -83,7 +88,7 @@ ngb-carousel {
 }
 
 .contact {
-	margin-top: 10px;
+	margin-top: 60px;
 	align-items: center;
 	justify-content: center;
 	display: flex;

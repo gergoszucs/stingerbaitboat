@@ -1,0 +1,26 @@
+<div class="wrapper">
+	<div class="page-header page-header-xs" data-parallax="true"
+		style="background-image: url('./assets/img/carousel2.jpg');">
+		<div class="filter"></div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="title text-center">
+				<h2>Képek</h2>
+				<br>
+				<p style="font-size: 16px;">Kattints a képekre a nagyításhoz.</p>
+				<br>
+				<ul class="image-gallery">
+					<ng-container *ngFor="let photo of photos">
+						<li>
+							<img [src]="getFullUrl(photo.url)" (click)="showLightbox(0)" />
+						</li>
+					</ng-container>
+				</ul>
+				<ng-image-fullscreen-view [images]="images" [imageIndex]="selectedImageIndex" [show]="showFlag"
+					(close)="closeEventHandler()">
+				</ng-image-fullscreen-view>
+			</div>
+		</div>
+	</div>
+</div>

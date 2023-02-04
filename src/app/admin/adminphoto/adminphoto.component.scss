@@ -1,0 +1,54 @@
+.main {
+	margin-top: 10vh;
+}
+
+.fa {
+	cursor: pointer;
+	font-size: 16px;
+	margin-right: 6px;
+}
+
+.image-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+@media screen and (min-width: 991px) {
+	input {
+		width: 1000px !important;
+	}
+}
+
+.image-gallery>li {
+	flex: 1 1 auto;
+	height: 250px;
+	position: relative;
+}
+
+.image-gallery li img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	border-radius: 5px;
+	cursor: not-allowed;
+}
+
+.edit-div {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+
+	.edit-title {
+		margin-right: 8px;
+		align-items: center;
+		display: flex;
+	}
+
+	input {
+		margin-right: 8px;
+	}
+}

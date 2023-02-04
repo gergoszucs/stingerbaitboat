@@ -1,0 +1,3 @@
+interface Photo {
+    url: string;
+}

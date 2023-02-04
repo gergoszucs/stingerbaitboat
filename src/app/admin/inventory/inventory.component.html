@@ -8,23 +8,33 @@
                 <table class="table" style="text-align: center">
                     <thead>
                         <tr>
-                            <th scope="col" class="col-md-5">Név</th>
-                            <th scope="col" class="col-md-4">Darab</th>
-                            <th scope="col" class="col-md-3"></th>
+                            <th scope="col" class="col-md-4">Név</th>
+                            <th scope="col" class="col-md-2">Beluga</th>
+                            <th scope="col" class="col-md-2">Készlet</th>
+                            <th scope="col" class="col-md-2">Határérték</th>
+                            <th scope="col" class="col-md-2"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <ng-container *ngFor="let item of items">
-                            <tr class="item-row">
+                        <ng-container *ngFor="let item of sortBy('name')">
+                            <tr class="item-row" [class.low-count]="+item.count < +item.threshold">
                                 <td>
-                                    <p *ngIf="!isBeingEdited(item.id)">{{item.name}} </p>
-                                    <input *ngIf="isBeingEdited(item.id)" [value]="item.name"
-                                        (keyup)="parseName($event)" />
+                                    <p>{{item.name}} </p>
+                                </td>
+                                <td>
+                                    <p *ngIf="item.belugaReq > 0 && !isBeingEdited(item.id)">{{item.belugaReq}}</p>
+                                    <input *ngIf="item.belugaReq > 0 && isBeingEdited(item.id)" [value]="item.belugaReq"
+                                        (keyup)="parseBelugaCount($event)" type="number" />
                                 </td>
                                 <td>
                                     <p *ngIf="!isBeingEdited(item.id)">{{item.count}}</p>
                                     <input *ngIf="isBeingEdited(item.id)" [value]="item.count"
-                                        (keyup)="parseCount($event)" />
+                                        (keyup)="parseCount($event)" type="number" />
+                                </td>
+                                <td>
+                                    <p *ngIf="!isBeingEdited(item.id)">{{item.threshold}}</p>
+                                    <input *ngIf="isBeingEdited(item.id)" [value]="item.threshold"
+                                        (keyup)="parseThreshold($event)" type="number" />
                                 </td>
                                 <td>
                                     <i *ngIf="!isBeingEdited(item.id)" class="fa fa-pencil" style="color:orange"
@@ -55,8 +65,16 @@
                         <input (keyup)="parseNewName($event)" />
                     </div>
                     <div>
-                        <p class="edit-title"><strong>Darab:</strong></p>
-                        <input (keyup)="parseNewCount($event)" />
+                        <p class="edit-title"><strong>Beluga darabszám:</strong></p>
+                        <input (keyup)="parseNewBelugaCount($event)" type="number" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Készlet:</strong></p>
+                        <input (keyup)="parseNewCount($event)" type="number" />
+                    </div>
+                    <div>
+                        <p class="edit-title"><strong>Határérték:</strong></p>
+                        <input (keyup)="parseNewThreshold($event)" type="number" />
                     </div>
                     <div class="item-actions">
                         <i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
@@ -66,7 +84,7 @@
                     </div>
                 </div>
                 <i *ngIf="!this.itemToCreate" class="fa fa-plus" style="color:green ; font-size: 20px"
-                    (click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új alkatrész"></i>
+                    (click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új kép"></i>
             </div>
         </div>
     </div>

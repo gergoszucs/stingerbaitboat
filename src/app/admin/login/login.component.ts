@@ -14,9 +14,14 @@ export class LoginComponent {
     authenticated = false;
     wrongPassword = false;
 
-    constructor(secretService: SecretService, private authService: AuthService) {
-        secretService.getPwd().then((doc) => {
+    constructor(private secretService: SecretService, private authService: AuthService) {
+        this.secretService.getPwd().then((doc) => {
             this.secret = (doc.data() as any).password as string;
+
+            if (atob(localStorage.getItem("stingerPwd")) === this.secret) {
+                this.authService.isLoggedIn = true;
+                this.authenticated = true;
+            }
         });
     }
 
@@ -25,6 +30,7 @@ export class LoginComponent {
         if (!this.authenticated) {
             this.wrongPassword = true;
         } else {
+            localStorage.setItem("stingerPwd", btoa(this.password));
             this.authService.isLoggedIn = true;
         }
     }

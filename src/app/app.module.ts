@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { AngularFireModule } from '@angular/fire/compat';
 import { DpDatePickerModule } from 'ng2-date-picker';
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { DecimalPipe } from '@angular/common';
 		AngularFirestoreModule,
 		DpDatePickerModule
 	],
-	providers: [DecimalPipe],
+	providers: [DecimalPipe, DatePipe],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

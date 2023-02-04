@@ -27,7 +27,8 @@
 								<p class="price">200,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Basic"
-										checked (change)="onBoatChange($event)" value="200000">
+										checked (change)="onBoatChange($event)" value="200000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -37,7 +38,7 @@
 								<p class="price">250,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Medium"
-										(change)="onBoatChange($event)" value="250000">
+										(change)="onBoatChange($event)" value="250000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -47,7 +48,7 @@
 								<p class="price">300,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Max"
-										(change)="onBoatChange($event)" value="300000">
+										(change)="onBoatChange($event)" value="300000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -70,7 +71,7 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio" id="Fehér" checked
-										(change)="onColorChange($event)" value="0">
+										(change)="onColorChange($event)" value="0" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -78,7 +79,7 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio" id="Fekete"
-										(change)="onColorChange($event)" value="0">
+										(change)="onColorChange($event)" value="0" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -88,7 +89,8 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-fehér-fekete" value="0">
+										(change)="onColorChange($event)" id="Fekete-fehér-fekete" value="0"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -98,7 +100,8 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-fekete-fehér" value="0">
+										(change)="onColorChange($event)" id="Fekete-fekete-fehér" value="0"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -108,7 +111,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -118,7 +122,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -130,7 +135,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -140,7 +146,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -150,7 +157,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -160,7 +168,8 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000">
+										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -168,7 +177,7 @@
 								<p class="price">40,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="colorRadio" id="Egyedi VTN"
-										(change)="onColorChange($event)" value="40000">
+										(change)="onColorChange($event)" value="40000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -193,7 +202,7 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadar" id="Radar nélkül"
-										(change)="onRadarChange($event)" value="0" checked>
+										(change)="onRadarChange($event)" value="0" checked [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm-5">
@@ -203,7 +212,7 @@
 								<p class="price">250,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadar" id="Toslon Tf 520"
-										(change)="onRadarChange($event)" value="250000">
+										(change)="onRadarChange($event)" value="250000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm-5">
@@ -213,7 +222,7 @@
 								<p class="price">350,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadar" id="Toslon Tf 640"
-										(change)="onRadarChange($event)" value="350000">
+										(change)="onRadarChange($event)" value="350000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -235,7 +244,8 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatPilot" id="Nem kérem"
-										(change)="onAutopilotChange($event)" value="0" checked>
+										(change)="onAutopilotChange($event)" value="0" checked
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -243,7 +253,7 @@
 								<p class="price">60,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatPilot" id="Félautomata"
-										(change)="onAutopilotChange($event)" value="60000">
+										(change)="onAutopilotChange($event)" value="60000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -251,7 +261,7 @@
 								<p class="price">160,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatPilot" id="Automata"
-										(change)="onAutopilotChange($event)" value="160000">
+										(change)="onAutopilotChange($event)" value="160000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -273,7 +283,8 @@
 								<p class="price">0 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="battery" id="Nem kérem"
-										(change)="onBatteryChange($event)" value="0" checked>
+										(change)="onBatteryChange($event)" value="0" checked
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -281,7 +292,7 @@
 								<p class="price">20,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="battery" id="5000mhA"
-										(change)="onBatteryChange($event)" value="20000">
+										(change)="onBatteryChange($event)" value="20000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -289,7 +300,7 @@
 								<p class="price">25,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="battery" id="6200mhA"
-										(change)="onBatteryChange($event)" value="25000">
+										(change)="onBatteryChange($event)" value="25000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -297,7 +308,7 @@
 								<p class="price">30,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="battery" id="9500mhA"
-										(change)="onBatteryChange($event)" value="30000">
+										(change)="onBatteryChange($event)" value="30000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -317,21 +328,24 @@
 								<h5>{{bag.name}}</h5>
 								<p class="price">{{bag.price | number:'1.0-0'}} Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" (change)="toggleBag()">
+									<input class="form-check-input" type="checkbox" (change)="toggleBag()"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
 								<h5>{{light.name}}</h5>
 								<p class="price">{{light.price | number:'1.0-0'}} Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" (change)="toggleLight()">
+									<input class="form-check-input" type="checkbox" (change)="toggleLight()"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
 								<h5>{{seaweed.name}}</h5>
 								<p class="price">{{seaweed.price | number:'1.0-0'}} Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" (change)="toggleSeaweed()">
+									<input class="form-check-input" type="checkbox" (change)="toggleSeaweed()"
+										[disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
