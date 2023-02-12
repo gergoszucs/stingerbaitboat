@@ -1,0 +1,36 @@
+<div class="wrapper">
+	<div class="main">
+		<div class="container">
+			<div class="text-center">
+				<h3>Akció</h3>
+			</div>
+			<div class="wrapper-div" *ngIf="sale">
+				<div>
+					<p class="edit-title"><strong>Szöveg</strong></p>
+					<p *ngIf="!isEditing" class="value">{{sale.text}}</p>
+					<textarea *ngIf="isEditing" class="wideinput" [value]="sale.text"
+						(keyup)="parseText($event)"></textarea>
+				</div>
+				<div>
+					<p class="edit-title"><strong>Kedvezmény </strong><i style="color:gray">(ha csak valamit ki
+							szeretnél írni a felső sávba, ezt állítsd nullára)</i></p>
+					<p *ngIf="!isEditing" class="value">{{sale.discount}}%</p>
+					<input *ngIf="isEditing" [value]="sale.discount" type="number" (change)="parseDiscount($event)" />
+				</div>
+				<div>
+					<p class="edit-title"><strong>Aktív</strong></p>
+					<input [disabled]="!isEditing" [checked]="sale.isEnabled" type="checkbox"
+						(change)="parseEnabled($event)" />
+				</div>
+				<div class="order-actions">
+					<i *ngIf="!isEditing" class="fa fa-pencil" style="color:orange" (click)="onEdit()"
+						data-toggle="tooltip" data-placement="top" title="Szerkesztés"></i>
+					<i *ngIf="isEditing" class="fa fa-download" style="color:green" (click)="onSave()"
+						data-toggle="tooltip" data-placement="top" title="Mentés"></i>
+					<i *ngIf="isEditing" class="fa fa-ban" style="color:orange" (click)="onCancel()"
+						data-toggle="tooltip" data-placement="top" title="Elvetés"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

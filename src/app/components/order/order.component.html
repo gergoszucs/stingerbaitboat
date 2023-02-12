@@ -1,15 +1,14 @@
 <div class="wrapper">
 	<div class="page-header page-header-xs" data-parallax="true"
 		style="background-image: url('./assets/img/delivery.jpg');">
+		<div class="title">
+			<h2>Rendelés</h2>
+		</div>
 		<div class="filter"></div>
 	</div>
 	<div class="section">
 		<div class="container">
 			<div class="row main">
-				<div class="title">
-					<h2>Rendelés</h2>
-				</div>
-
 				<div class="container boat">
 					<div>
 						<h3>Hajó</h3>
@@ -193,7 +192,10 @@
 							együtt használható.</p>
 						<p class="subtitle">A Toslon radarok tökéletes képet adnak a vízfenékről, így biztosan oda
 							juttathatod el a
-							szereléket, ahol szerinted a legnagyobb eséllyel található hal.</p>
+							szereléket, ahol szerinted a legnagyobb eséllyel található hal. </p>
+						<p class="subtitle"><a [routerLink]="['/radarok']" routerLinkActive="active">Bővebb infóért
+								kattints
+								ide.</a></p>
 					</div>
 					<div class="grp">
 						<div class="row">
@@ -455,10 +457,11 @@
 							</div>
 							<div class="row total-price">
 								<div class="col text-start">
-									<h5 class="basket">Összesen</h5>
+									<h5 class="basket">Összesen {{isSale ? '(-' + sale.discount + '% kedvezménnyel)' :
+										''}}</h5>
 								</div>
 								<div class="col text-end">
-									<h5>{{totalPrice | number:'1.0-0'}} Ft</h5>
+									<h5>{{isSale ? discountedPrice : totalPrice | number:'1.0-0'}} Ft</h5>
 								</div>
 							</div>
 						</div>

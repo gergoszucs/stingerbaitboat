@@ -11,6 +11,8 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 import { AdminPhotoComponent } from './adminphoto/adminphoto.component';
 import { AdminVideoComponent } from './adminvideo/adminvideo.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { NewsComponent } from './news/news.component';
+import { SaleComponent } from './sale/sale.component';
 
 const routes: Routes = [
     { path: '', component: LoginComponent }
@@ -23,7 +25,9 @@ const routes: Routes = [
         OrdersComponent,
         AdminPhotoComponent,
         AdminVideoComponent,
-        InventoryComponent
+        InventoryComponent,
+        NewsComponent,
+        SaleComponent
     ],
     imports: [
         HttpClientModule,

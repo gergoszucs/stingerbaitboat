@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from "@angular/router";
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollToService } from "@nicky-lenaers/ngx-scroll-to";
+import { NewsService } from 'app/services/news.service';
 
 let apiLoaded = false;
 
@@ -14,8 +15,9 @@ export class BasicelementsComponent implements OnInit {
 	fragment: string;
 	screenWidth = 640;
 	screenHeight = 390;
+	news: News;
 
-	constructor(router: Router, scrollToService: ScrollToService, config: NgbCarouselConfig) {
+	constructor(router: Router, scrollToService: ScrollToService, config: NgbCarouselConfig, private newsService: NewsService) {
 		router.events.filter(event => event instanceof NavigationEnd)
 			.subscribe(event => {
 				const url = (event as NavigationEnd).url;
@@ -55,5 +57,13 @@ export class BasicelementsComponent implements OnInit {
 			document.body.appendChild(tag);
 			apiLoaded = true;
 		}
+
+		this.newsService.get().subscribe(news => {
+			this.news = news;
+		});
+	}
+
+	getFullUrl(id: string) {
+		return `https://drive.google.com/uc?id=${id}`;
 	}
 }

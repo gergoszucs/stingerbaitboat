@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InventoryService } from 'app/services/inventory.service';
 import { MailService } from 'app/services/mail.service';
 import { OrderService } from 'app/services/order.service';
+import { SaleService } from 'app/services/sale.service';
 
 @Component({
 	selector: 'app-order',
@@ -11,6 +12,7 @@ import { OrderService } from 'app/services/order.service';
 
 export class OrderComponent implements OnInit {
 	inventoryItems: InventoryItem[] = [];
+	sale: Sale;
 
 	boat: Item = {
 		name: "Beluga Basic",
@@ -56,6 +58,7 @@ export class OrderComponent implements OnInit {
 	seaweedChecked = false;
 
 	totalPrice: number;
+	discountedPrice = 0;
 	name: string;
 	phone: string;
 	email: string;
@@ -63,8 +66,9 @@ export class OrderComponent implements OnInit {
 	canSubmitOrder = false;
 	showSubmitError = false;
 	orderProcessed = false;
+	isSale = false;
 
-	constructor(private mailService: MailService, private orderService: OrderService, private inventoryService: InventoryService) {
+	constructor(private mailService: MailService, private orderService: OrderService, private inventoryService: InventoryService, private saleService: SaleService) {
 		this.totalPrice = this.boat.price + this.color.price + this.radar.price + this.autopilot.price
 			+ this.battery.price;
 	}
@@ -77,6 +81,15 @@ export class OrderComponent implements OnInit {
 					...e.payload.doc.data() as InventoryItem
 				};
 			});
+		});
+
+		this.saleService.get().subscribe(sale => {
+			this.sale = sale;
+			this.isSale = this.sale && this.sale.isEnabled && this.sale.discount > 0;
+
+			if (this.isSale) {
+				this.discountedPrice = this.totalPrice * ((100 - this.sale.discount) / 100);
+			}
 		});
 	}
 
@@ -94,6 +107,10 @@ export class OrderComponent implements OnInit {
 
 		if (this.seaweedChecked) {
 			this.totalPrice += this.seaweed.price;
+		}
+
+		if (this.isSale) {
+			this.discountedPrice = this.totalPrice * ((100 - this.sale.discount) / 100);
 		}
 	}
 
@@ -194,7 +211,7 @@ export class OrderComponent implements OnInit {
 			light: this.lightChecked,
 			name: this.name,
 			phone: this.phone,
-			price: this.totalPrice,
+			price: this.discountedPrice > 0 ? this.discountedPrice : this.totalPrice,
 			radar: this.radar.name,
 			seaweed: this.seaweedChecked,
 			fulfilledDate: '',
@@ -202,13 +219,11 @@ export class OrderComponent implements OnInit {
 			warrantyDate: ''
 		};
 
-		this.updateInventoryOnPurchase(order);
-
-		// this.mailService.sendMail(order).finally(() => {
-		// 	this.orderProcessed = true;
-		// 	this.updateInventoryOnPurchase(order);
-		// 	this.orderService.create(order);
-		// })
+		this.mailService.sendMail(order).finally(() => {
+			this.orderProcessed = true;
+			this.updateInventoryOnPurchase(order);
+			this.orderService.create(order);
+		})
 	}
 
 	private checkIfCanSubmitOrder() {

@@ -33,7 +33,11 @@ export class PhotoComponent implements OnInit {
 			});
 
 			this.photos.forEach(photo => {
-				this.images.push({ image: this.getFullUrl(photo.url) })
+				this.images.push({
+					image: this.getFullUrl(photo.url),
+					alt: photo.title,
+					title: photo.title
+				})
 			});
 		});
 	}

@@ -1,16 +1,28 @@
-.title {
-	width: 100%;
-	margin-top: 16px;
-	margin-bottom: 0;
+.page-header {
+	align-items: center;
+
+	.title {
+		margin: 0 !important;
+		padding: 0 !important;
+		z-index: 2;
+	}
 
 	h2 {
+		font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif !important;
+		text-transform: uppercase !important;
+		font-size: 42px !important;
+		color: #ffffff !important;
+		line-height: 1.4em !important;
+		font-weight: 900;
+		margin: 0 !important;
 		text-align: center;
 	}
 }
 
-p {
+p,
+.text-muted {
 	font-weight: 400;
-	color: slategrey;
+	color: darkslategray;
 }
 
 .dot {

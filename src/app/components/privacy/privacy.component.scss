@@ -1,13 +1,31 @@
-.title {
-	margin-top: 32px;
-	margin-bottom: 36px;
+.page-header {
+	align-items: center;
+
+	.title {
+		margin: 0 !important;
+		padding: 0 !important;
+		z-index: 2;
+	}
 
 	h2 {
+		font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif !important;
+		text-transform: uppercase !important;
+		font-size: 42px !important;
+		color: #ffffff !important;
+		line-height: 1.4em !important;
+		font-weight: 900;
+		margin: 0 !important;
 		text-align: center;
 	}
 }
 
+
 .privacy-content {
 	font-size: 15px;
 	text-align: justify;
+
+	p {
+		font-weight: 400 !important;
+		color: darkslategray !important;
+	}
 }

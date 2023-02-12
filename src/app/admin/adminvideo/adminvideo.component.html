@@ -5,13 +5,18 @@
 				<h3>Videók</h3>
 			</div>
 			<div *ngIf="this.videoToCreate" class="new-item">
-				<div class="edit-div">
-					<p class="edit-title"><strong>Id:</strong></p>
-					<input style="width:250px" (keyup)="parseVideo($event)" />
-					<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
-						data-placement="top" title="Mentés"></i>
-					<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
-						data-placement="top" title="Elvetés"></i>
+				<div class="edit-div col">
+					<span class="edit-title"><strong>Youtube ID</strong> <i>(pl: 2Z3QXgNzyis)</i></span>
+					<input style="width:250px" (keyup)="parseVideo($event)">
+					<br>
+					<span class="edit-title"><strong>Videó leírás</strong></span>
+					<textarea style="width:250px" (keyup)="parseTitle($event)"></textarea>
+					<div class="row">
+						<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+							data-placement="top" title="Mentés"></i>
+						<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+							data-placement="top" title="Elvetés"></i>
+					</div>
 				</div>
 			</div>
 			<i *ngIf="!this.videoToCreate" class="fa fa-plus" style="color:green ; font-size: 20px; margin-bottom: 20px"
@@ -24,6 +29,7 @@
 						</youtube-player>
 						<i class="fa fa-trash" style="color:red" (click)="onDelete(video.id)" data-toggle="tooltip"
 							data-placement="top" title="Törlés"></i>
+						<p class="centered" *ngIf="video.title">{{video.title}}</p>
 					</div>
 				</ng-container>
 			</div>

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" [class.discount-active]="isDiscountActive"
+	color-on-scroll="500">
 	<div class="container">
 		<div class="navbar-translate">
 			<button class="logo-image" (click)="logoClicked()">
@@ -18,10 +19,16 @@
 					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Hajók</a>
 					<ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
-						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Basic</a></li>
-						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Medium</a></li>
-						<li class="nav-item" ngbDropdownItem><a class="nav-link" href="#">Beluga Max</a></li>
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" [routerLink]="['/hajo/basic']">Beluga
+								Basic</a></li>
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" [routerLink]="['/hajo/medium']">Beluga
+								Medium</a></li>
+						<li class="nav-item" ngbDropdownItem><a class="nav-link" [routerLink]="['/hajo/max']">Beluga
+								Max</a></li>
 					</ul>
+				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
+					<a [routerLink]="['/radarok']" class="nav-link">Radarok</a>
 				</li>
 				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/rendeles']" class="nav-link">Rendelés</a>
@@ -35,6 +42,14 @@
 				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/index']" fragment="kapcsolat" class="nav-link">Kapcsolat</a>
 				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
+					<a href="https://www.facebook.com/groups/798975810699287" class="nav-link facebook"
+						target="_blank"><i class="fa fa-facebook-official"></i></a>
+				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
+					<a href="https://www.instagram.com/stingerbaitboat/" class="nav-link insta" target="_blank"><i
+							class="fa fa-instagram"></i></a>
+				</li>
 				<li *ngIf="isAdmin" class="nav-item">
 					<a [routerLink]="['/admin/rendelesek']" class="nav-link">Rendelések</a>
 				</li>
@@ -46,6 +61,12 @@
 				</li>
 				<li *ngIf="isAdmin" class="nav-item">
 					<a [routerLink]="['/admin/videok']" class="nav-link">Videók</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/ujdonsag']" class="nav-link">Újdonság</a>
+				</li>
+				<li *ngIf="isAdmin" class="nav-item">
+					<a [routerLink]="['/admin/akcio']" class="nav-link">Akció</a>
 				</li>
 			</ul>
 		</div>

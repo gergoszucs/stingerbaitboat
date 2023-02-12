@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     isAdmin: boolean;
+    @Input() isDiscountActive: boolean;
+    animation = "my-animation 20s linear infinite";
 
     constructor(public location: Location, private element: ElementRef, private router: Router) {
         this.sidebarVisible = false;

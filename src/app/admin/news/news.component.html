@@ -1,0 +1,40 @@
+<div class="wrapper">
+	<div class="main">
+		<div class="container">
+			<div class="text-center">
+				<h3>Újdonság</h3>
+			</div>
+			<div class="wrapper-div" *ngIf="news">
+				<div>
+					<p class="edit-title"><strong>Szöveg</strong></p>
+					<p *ngIf="!isEditing" class="value">{{news.text}}</p>
+					<textarea *ngIf="isEditing" class="wideinput" [value]="news.text"
+						(keyup)="parseText($event)"></textarea>
+				</div>
+				<div>
+					<p class="edit-title"><strong>Kép (Google Drive URL)</strong></p>
+					<p *ngIf="!isEditing" class="value">{{news.photoUrl}}</p>
+					<input *ngIf="isEditing" class="wideinput" [value]="news.photoUrl" (keyup)="parsePhoto($event)" />
+				</div>
+				<div>
+					<p class="edit-title"><strong>Videó (Youtube ID)</strong></p>
+					<p *ngIf="!isEditing" class="value">{{news.videoUrl}}</p>
+					<input *ngIf="isEditing" class="wideinput" [value]="news.videoUrl" (keyup)="parseVideo($event)" />
+				</div>
+				<div>
+					<p class="edit-title"><strong>Aktív</strong></p>
+					<input [disabled]="!isEditing" [checked]="news.isEnabled" type="checkbox"
+						(change)="parseEnabled($event)" />
+				</div>
+				<div class="order-actions">
+					<i *ngIf="!isEditing" class="fa fa-pencil" style="color:orange" (click)="onEdit()"
+						data-toggle="tooltip" data-placement="top" title="Szerkesztés"></i>
+					<i *ngIf="isEditing" class="fa fa-download" style="color:green" (click)="onSave()"
+						data-toggle="tooltip" data-placement="top" title="Mentés"></i>
+					<i *ngIf="isEditing" class="fa fa-ban" style="color:orange" (click)="onCancel()"
+						data-toggle="tooltip" data-placement="top" title="Elvetés"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

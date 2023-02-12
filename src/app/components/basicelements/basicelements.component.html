@@ -5,21 +5,22 @@
 				<h1 class="sbb-title">Stinger Bait Boat</h1>
 			</div>
 			<div class="row-md-8"><img src="assets/img/stinger-logo.png" alt="Stinger Bait Boat"
-					style="height: 60px; margin-bottom: 40px;"><br></div>
-			<div class="row-md-8">
+					style="height: 60px; margin-bottom: 50px"><br></div>
+		</div>
+		<!-- <div class="col introduction">
+			<p>Üdvözöllek az oldalamon! </p><br>
+			<p>Szabó Bernát vagyok a Stinger etetőhajók forgalmazója. </p><br>
+			<p>A sport horgászat iránti tiszteletem és a minőségi etetőhajók iránti kereslett miatt,
+				úgy hozta a sors, hogy megkezdtem egyedi hajóim értékesítését.</p><br>
+			<p>Nagyon köszönöm, hogy felkerested oldalamat. Kérlek nézz körül a termékeim között és keress bizalommal!
+			</p>
+			<br>
+			<div class="row-md-8 text-center">
 				<youtube-player videoId="XsyQLye2DhQ" suggestedQuality="highres" [height]="screenHeight"
 					[width]="screenWidth">
 				</youtube-player>
 			</div>
-		</div>
-		<div class="introduction">
-			<p>Üdvözöllek az oldalamon! </p><br>
-			<p>Szabó Bernát vagyok a Stinger etetőhajók forgalmazója. </p><br>
-			<p>A sport horgászat iránti tiszteletem és a minőségi etetőhajók iránti kereslett miatt,
-				úgy hozta a sors, hogy megkezdtem egyedi hajóim értékesítését.</p>
-			<p>Nagyon köszönöm, hogy felkerested oldalamat. Kérlek nézz körül a termékeim között és keress bizalommal!
-			</p>
-		</div>
+		</div> -->
 		<div class="row slideshow">
 			<div class="col-md-8">
 				<ngb-carousel>
@@ -83,29 +84,48 @@
 				<tbody>
 					<tr>
 						<th scope="row">Motor</th>
-						<td>775-ös 200W szénkefés</td>
-						<td>1600W BL motor szénkefe mentes</td>
-						<td>2000W BL motor szénkefe mentes</td>
+						<td class="table-item">775-ös 200W szénkefés</td>
+						<td class="table-item">1600W BL szénkefe mentes</td>
+						<td class="table-item">2000W BL szénkefe mentes</td>
 					</tr>
 					<tr>
 						<th scope="row"> Akkumulátor</th>
-						<td>5000mhA Li-Po</td>
-						<td>5000mhA Li-Po</td>
-						<td>9500mhA Li-Po</td>
+						<td class="table-item">5000mhA Li-Po</td>
+						<td class="table-item">5000mhA Li-Po</td>
+						<td class="table-item">9500mhA Li-Po</td>
 					</tr>
 					<tr>
 						<th scope="row">Behúzások száma</th>
-						<td>18-25</td>
-						<td>18-25</td>
-						<td>10-20</td>
+						<td class="table-item">18-25</td>
+						<td class="table-item">18-25</td>
+						<td class="table-item">10-20</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="order">
-			<a [routerLink]="['/rendelés']" class="nav-link"><button
+			<a [routerLink]="['/rendeles']" class="nav-link"><button
 					class="btn btn-danger btn-block btn-round">Rendelés</button></a>
 		</div>
+
+
+		<div *ngIf="news" class="col news text-center">
+			<h3 class="news-title">Újdonság!</h3>
+			<div class="news-text">
+				<p>{{news.text}}</p>
+			</div>
+			<div class="row-md-8"><img [src]="getFullUrl(news.photoUrl)" [width]="screenWidth"
+					style="margin-bottom: 40px;"><br>
+			</div>
+			<div class="row-md-8">
+				<youtube-player [videoId]="news.videoUrl" suggestedQuality="highres" [height]="screenHeight"
+					[width]="screenWidth">
+				</youtube-player>
+			</div>
+		</div>
+
+
+
 		<div>
 			<div class="container text-center contact">
 				<div class="row">

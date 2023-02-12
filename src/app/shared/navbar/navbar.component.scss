@@ -38,6 +38,8 @@ nav[_ngcontent-fnx-c130]:not(.navbar-transparent) a[_ngcontent-fnx-c130]:hover {
 	.dropdown.show .dropdown-menu {
 		background: white;
 		height: auto;
+		display: contents;
+		text-align: left;
 
 		a {
 			color: #9A9A9A !important;
@@ -49,7 +51,7 @@ nav[_ngcontent-fnx-c130]:not(.navbar-transparent) a[_ngcontent-fnx-c130]:hover {
 
 		.dropdown-item {
 			padding: 0;
-			margin: 0;
+			margin: 0 0 0 10px;
 
 			a {
 				padding: 0;
@@ -84,6 +86,30 @@ img {
 	background-color: transparent;
 }
 
+.facebook,
+.insta {
+	padding: 10px 8px !important;
+	color: white !important;
+
+	i {
+		top: 1px;
+		font-size: 20px;
+	}
+}
+
+.facebook i {
+	color: #1877f2;
+}
+
+.insta i {
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+	-webkit-background-clip: text;
+	/* Also define standard property for compatibility */
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	/* change this to change the size*/
+}
+
 @media screen and (min-width: 991px) {
 	.logo-image img {
 		height: 45px;
@@ -96,4 +122,8 @@ img {
 		padding-right: 10px;
 		height: 50px;
 	}
+}
+
+.discount-active {
+	top: 20px !important;
 }

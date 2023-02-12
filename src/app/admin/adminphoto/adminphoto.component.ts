@@ -28,13 +28,18 @@ export class AdminPhotoComponent implements OnInit {
 	onCreate() {
 		this.isAdding = true;
 		this.photoToCreate = {
-			url: ''
+			url: '',
+			title: null
 		};
 	}
 
 	parsePhoto(event: any) {
 		let url: string = event.target.value;
 		this.photoToCreate.url = url.substring(url.indexOf("/d/") + 3, url.indexOf("/view"));
+	}
+
+	parseTitle(event: any) {
+		this.photoToCreate.title = event.target.value;
 	}
 
 	onSaveNew() {

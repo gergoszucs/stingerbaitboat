@@ -1,0 +1,38 @@
+.main {
+	margin-top: 10vh;
+}
+
+h3 {
+	margin-bottom: 18px;
+	color: darkslategray;
+	font-weight: 400;
+	font-size: 32px;
+}
+
+p,
+input,
+textarea {
+	font-size: 15px;
+	font-weight: 400;
+	color: darkslategray;
+}
+
+.fa {
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 6px;
+}
+
+.wrapper-div>div {
+	margin-bottom: 12px;
+}
+
+.wideinput {
+	width: 350px !important;
+}
+
+@media screen and (min-width: 991px) {
+	.wideinput {
+		width: 1000px !important;
+	}
+}

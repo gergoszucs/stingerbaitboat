@@ -28,8 +28,6 @@ export class AdminVideoComponent implements OnInit {
 
 	ngOnInit() {
 		if (!apiLoaded) {
-			// This code loads the IFrame Player API code asynchronously, according to the instructions at
-			// https://developers.google.com/youtube/iframe_api_reference#Getting_Started
 			const tag = document.createElement('script');
 			tag.src = 'https://www.youtube.com/iframe_api';
 			document.body.appendChild(tag);
@@ -49,12 +47,17 @@ export class AdminVideoComponent implements OnInit {
 	onCreate() {
 		this.isAdding = true;
 		this.videoToCreate = {
-			url: ''
+			url: '',
+			title: null
 		};
 	}
 
 	parseVideo(event: any) {
 		this.videoToCreate.url = event.target.value;
+	}
+
+	parseTitle(event: any) {
+		this.videoToCreate.title = event.target.value;
 	}
 
 	onSaveNew() {

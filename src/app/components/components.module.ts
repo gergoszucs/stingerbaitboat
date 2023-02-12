@@ -14,6 +14,10 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { PhotoComponent } from './photo/photo.component';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { VideoComponent } from './video/video.component';
+import { RadarComponent } from './radar/radar.component';
+import { BasicComponent } from './basic/basic.component';
+import { MediumComponent } from './medium/medium.component';
+import { MaxComponent } from './max/max.component';
 
 @NgModule({
 	imports: [
@@ -32,7 +36,11 @@ import { VideoComponent } from './video/video.component';
 		OrderComponent,
 		PrivacyComponent,
 		PhotoComponent,
-		VideoComponent
+		VideoComponent,
+		RadarComponent,
+		BasicComponent,
+		MediumComponent,
+		MaxComponent
 	],
 	exports: [ComponentsComponent]
 })

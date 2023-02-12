@@ -5,15 +5,20 @@
 				<h3>Képek</h3>
 			</div>
 			<div *ngIf="this.photoToCreate" class="new-item">
-				<div class="edit-div">
-					<p class="edit-title"><strong>Id:</strong></p>
+				<div class="edit-div col">
+					<span class="edit-title"><strong>Drive link</strong> <i>(pl:
+							https://drive.google.com/file/d/1YbtiXSJGZmn7iKM1BCqW6u4iyfGwT_WE/view?usp=sharing)</i></span>
 					<input style="width:250px" (keyup)="parsePhoto($event)" />
-					<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
-						data-placement="top" title="Mentés"></i>
-					<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
-						data-placement="top" title="Elvetés"></i>
+					<br>
+					<span class="edit-title"><strong>Kép leírás</strong></span>
+					<textarea style="width:250px" (keyup)="parseTitle($event)"></textarea>
+					<div class="row">
+						<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+							data-placement="top" title="Mentés"></i>
+						<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+							data-placement="top" title="Elvetés"></i>
+					</div>
 				</div>
-
 			</div>
 			<i *ngIf="!this.photoToCreate" class="fa fa-plus" style="color:green ; font-size: 20px; margin-bottom: 20px"
 				(click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új kép"></i>
@@ -21,6 +26,7 @@
 				<ng-container *ngFor="let photo of photos">
 					<li>
 						<img [src]="getFullUrl(photo.url)" (click)="onDelete(photo.id)" />
+						<p class="centered" *ngIf="photo.title">{{photo.title}}</p>
 					</li>
 				</ng-container>
 			</ul>

@@ -1,6 +1,6 @@
 .section {
 	padding-top: 40px;
-	color: #212529 !important;
+	color: darkslategray !important;
 	font-size: 16px !important;
 
 	.title {
@@ -15,11 +15,12 @@
 
 .introduction {
 	text-align: justify;
-	padding: 50px 0;
+	padding: 30px 0;
 }
 
 p {
 	font-size: 17px !important;
+	font-weight: 400;
 }
 
 .title {
@@ -31,7 +32,7 @@ ngb-carousel {
 		height: 100%
 	}
 
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .boat-common {
@@ -51,6 +52,7 @@ ngb-carousel {
 
 	.list-group-item {
 		border: none;
+		font-weight: 400;
 	}
 }
 
@@ -69,6 +71,10 @@ ngb-carousel {
 		vertical-align: middle;
 	}
 
+	.table-item {
+		font-weight: 400;
+	}
+
 	margin-bottom: 24px;
 }
 
@@ -81,6 +87,7 @@ ngb-carousel {
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	margin-bottom: 50px;
 
 	button {
 		width: 250px;
@@ -88,7 +95,7 @@ ngb-carousel {
 }
 
 .contact {
-	margin-top: 60px;
+	margin-top: 40px;
 	align-items: center;
 	justify-content: center;
 	display: flex;
@@ -122,4 +129,14 @@ ngb-carousel {
 .slideshow {
 	display: flex;
 	justify-content: center;
+}
+
+.news {
+	.news-text {
+		margin: 16px 0;
+	}
+
+	img {
+		border-radius: 5px;
+	}
 }

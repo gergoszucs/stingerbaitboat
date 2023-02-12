@@ -12,6 +12,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { environment } from '../environments/environment';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -35,6 +36,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 		YouTubePlayerModule,
 		ScrollToModule.forRoot(),
 		AngularFireModule.initializeApp(environment.firebase, 'stinger'),
+		AngularFireAnalyticsModule,
 		AngularFirestoreModule,
 		DpDatePickerModule
 	],

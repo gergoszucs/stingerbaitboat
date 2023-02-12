@@ -64,7 +64,7 @@
 			font-size: 14px;
 			text-transform: uppercase;
 			font-weight: 600;
-			color: $default-color;
+			color: steelblue;
 		}
 
 		.nav-item .nav-link.btn {
@@ -182,7 +182,7 @@
 
 
 .navbar-expand-lg .navbar-collapse {
-    justify-content: end;
+	justify-content: end;
 }
 
 .navbar-transparent,
@@ -258,7 +258,7 @@
 
 .navbar-default {
 	.brand {
-		color: $font-color  !important;
+		color: $font-color !important;
 	}
 
 	.navbar-nav {

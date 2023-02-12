@@ -1,10 +1,29 @@
-.title {
-	margin-top: 18px;
-	margin-bottom: 48px;
+.page-header {
+	align-items: center;
+
+	.title {
+		margin: 0 !important;
+		padding: 0 !important;
+		z-index: 2;
+	}
 
 	h2 {
+		font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif !important;
+		text-transform: uppercase !important;
+		font-size: 42px !important;
+		color: #ffffff !important;
+		line-height: 1.4em !important;
+		font-weight: 900;
+		margin: 0 !important;
 		text-align: center;
 	}
+}
+
+p.info {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: 400;
+	color: darkslategray;
 }
 
 .image-gallery {
@@ -13,6 +32,7 @@
 	gap: 10px;
 	list-style-type: none;
 	padding-left: 0;
+	z-index: 1051;
 }
 
 .image-gallery>li {
