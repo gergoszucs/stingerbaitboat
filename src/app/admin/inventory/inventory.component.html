@@ -59,13 +59,14 @@
                 <div *ngIf="this.itemToCreate" class="new-item">
                     <div class="text-center" style="display:block; margin: 0">
                         <h3 style="margin: 0">Új alkatrész felvétele</h3>
+                        <br>
                     </div>
                     <div>
                         <p class="edit-title"><strong>Név:</strong></p>
                         <input (keyup)="parseNewName($event)" />
                     </div>
                     <div>
-                        <p class="edit-title"><strong>Beluga darabszám:</strong></p>
+                        <p class="edit-title"><strong>Beluga:</strong></p>
                         <input (keyup)="parseNewBelugaCount($event)" type="number" />
                     </div>
                     <div>
@@ -83,8 +84,8 @@
                             data-placement="top" title="Elvetés"></i>
                     </div>
                 </div>
-                <i *ngIf="!this.itemToCreate" class="fa fa-plus" style="color:green ; font-size: 20px"
-                    (click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új kép"></i>
+                <i *ngIf="!this.itemToCreate" class="fa fa-plus" style="color:green" (click)="onCreate()"
+                    data-toggle="tooltip" data-placement="top" title="Új kép"></i>
             </div>
         </div>
     </div>

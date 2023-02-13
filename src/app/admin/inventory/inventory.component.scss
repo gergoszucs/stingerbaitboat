@@ -16,6 +16,10 @@ h3 {
 table tbody tr {
     border: 1px solid lightgray;
 
+    input {
+        width: 45px;
+    }
+
     p {
         margin-bottom: 0 !important;
         font-size: 15px;
@@ -26,8 +30,8 @@ table tbody tr {
 
 .fa {
     cursor: pointer;
-    font-size: 18px;
-    margin-right: 6px;
+    font-size: 22px;
+    margin-right: 14px;
 }
 
 .low-count {

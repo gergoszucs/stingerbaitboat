@@ -6,7 +6,7 @@
 			</div>
 			<div *ngIf="this.photoToCreate" class="new-item">
 				<div class="edit-div col">
-					<span class="edit-title"><strong>Drive link</strong> <i>(pl:
+					<span class="edit-title"><strong>Drive link</strong> <i style="word-break: break-word;">(pl:
 							https://drive.google.com/file/d/1YbtiXSJGZmn7iKM1BCqW6u4iyfGwT_WE/view?usp=sharing)</i></span>
 					<input style="width:250px" (keyup)="parsePhoto($event)" />
 					<br>
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 			</div>
-			<i *ngIf="!this.photoToCreate" class="fa fa-plus" style="color:green ; font-size: 20px; margin-bottom: 20px"
+			<i *ngIf="!this.photoToCreate" class="fa fa-plus" style="color:green;margin-bottom: 20px"
 				(click)="onCreate()" data-toggle="tooltip" data-placement="top" title="Új kép"></i>
 			<ul class="image-gallery">
 				<ng-container *ngFor="let photo of photos">

@@ -25,6 +25,11 @@
 
 p {
 	margin-top: 14px;
+	text-align: justify;
+}
+
+li {
+	margin-top: 6px;
 }
 
 p,
@@ -78,7 +83,9 @@ li {
 		font-weight: 500;
 	}
 
-	.radar-col {
-		padding: 0 30px 0 30px;
+	@media screen and (min-width: 991px) {
+		.radar-col {
+			padding: 0 30px 0 30px;
+		}
 	}
 }

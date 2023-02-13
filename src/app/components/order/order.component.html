@@ -12,15 +12,18 @@
 				<div class="container boat">
 					<div>
 						<h3>Hajó</h3>
-						<p class="subtitle">Válaszd ki milyen felszereltségű modellt szeretnél. A hajókról, azok
-							specifikációjáról részletesebben <a [routerLink]="['/index']" routerLinkActive="active"
-								fragment="hajok">itt</a> olvashatsz.
+						<p class="subtitle">Válaszd ki milyen felszereltségű modellt szeretnél. A hajók
+							összehasonlítását <a [routerLink]="['/index']" routerLinkActive="active"
+								fragment="hajok">itt</a> találod, illetve a nevükre kattintva részletesebb információ is
+							elérhető.
 						</p>
 					</div>
 					<div class="grp">
 						<div class="row">
 							<div class="col-sm">
-								<h5>Stinger Beluga Basic</h5>
+								<a [routerLink]="['/hajo/basic']" routerLinkActive="active">
+									<h5>Stinger Beluga Basic</h5>
+								</a>
 								<img src="./assets/img/beluga-basic.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
 								<p class="price">200,000 Ft</p>
@@ -31,7 +34,9 @@
 								</div>
 							</div>
 							<div class="col-sm">
-								<h5>Stinger Beluga Medium</h5>
+								<a [routerLink]="['/hajo/medium']" routerLinkActive="active">
+									<h5>Stinger Beluga Medium</h5>
+								</a>
 								<img src="./assets/img/beluga-medium.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
 								<p class="price">250,000 Ft</p>
@@ -41,7 +46,9 @@
 								</div>
 							</div>
 							<div class="col-sm">
-								<h5>Stinger Beluga Max</h5>
+								<a [routerLink]="['/hajo/max']" routerLinkActive="active">
+									<h5>Stinger Beluga Max</h5>
+								</a>
 								<img src="./assets/img/beluga-max.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
 								<p class="price">300,000 Ft</p>
