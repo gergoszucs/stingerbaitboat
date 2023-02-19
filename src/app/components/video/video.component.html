@@ -9,8 +9,8 @@
 	<div class="section">
 		<div class="container">
 			<div class="text-center">
-				<br>
-				<div class="video-gallery">
+				<div *ngIf="videos.length > 0; else noVideo" class="video-gallery">
+					<br>
 					<ng-container *ngFor="let video of videos">
 						<div class="video-wrapper">
 							<youtube-player [videoId]="video.url" suggestedQuality="highres" [height]="screenHeight"
@@ -24,3 +24,6 @@
 		</div>
 	</div>
 </div>
+<ng-template #noVideo>
+	<h4 class="text-center">Jelenleg nincs elérhető videó.</h4>
+</ng-template>

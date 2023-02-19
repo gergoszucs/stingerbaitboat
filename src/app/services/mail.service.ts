@@ -49,7 +49,8 @@ export class MailService {
 
               <h4>Általános információ</h4>
               
-              <p>A hajóra és tartozékaira (kivéve akkumulátor) 2 + 1 év saját garancia van.</p>
+              <p>A hajóra és tartozékaira (kivéve akkumulátor) 2 + 1 év saját garancia van. 
+              A bónusz év abban az esetben jár, ha elhozod a hajót az éves karbantartásokra.</p>
               
               <p>Esetleges házhoz szálítás ára 10.000 Ft. Ezt az összeget a szállítás napján kell elutalni.</p>
               

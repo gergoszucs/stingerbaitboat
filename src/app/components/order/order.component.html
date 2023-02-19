@@ -24,12 +24,12 @@
 								<a [routerLink]="['/hajo/basic']" routerLinkActive="active">
 									<h5>Stinger Beluga Basic</h5>
 								</a>
-								<img src="./assets/img/beluga-basic.png" alt="Circle Image"
+								<img src="./assets/img/beluga-bas-c.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
-								<p class="price">200,000 Ft</p>
+								<p class="price">240,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Basic"
-										checked (change)="onBoatChange($event)" value="200000"
+										checked (change)="onBoatChange($event)" value="240000"
 										[disabled]="orderProcessed">
 								</div>
 							</div>
@@ -37,24 +37,24 @@
 								<a [routerLink]="['/hajo/medium']" routerLinkActive="active">
 									<h5>Stinger Beluga Medium</h5>
 								</a>
-								<img src="./assets/img/beluga-medium.png" alt="Circle Image"
+								<img src="./assets/img/beluga-med-c.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
-								<p class="price">250,000 Ft</p>
+								<p class="price">280,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Medium"
-										(change)="onBoatChange($event)" value="250000" [disabled]="orderProcessed">
+										(change)="onBoatChange($event)" value="280000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
 								<a [routerLink]="['/hajo/max']" routerLinkActive="active">
 									<h5>Stinger Beluga Max</h5>
 								</a>
-								<img src="./assets/img/beluga-max.png" alt="Circle Image"
+								<img src="./assets/img/beluga-max-c.png" alt="Circle Image"
 									class="img-circle img-no-padding img-responsive">
-								<p class="price">300,000 Ft</p>
+								<p class="price">315,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatRadio" id="Beluga Max"
-										(change)="onBoatChange($event)" value="300000" [disabled]="orderProcessed">
+										(change)="onBoatChange($event)" value="315000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>
@@ -65,8 +65,7 @@
 					<div>
 						<h3>Szín</h3>
 						<p class="subtitle">Válaszd ki a számodra legmegfelelőbb színkombinációt, vagy kérj akár
-							teljesen egyedi, VTN
-							fényezést.</p>
+							teljesen egyedi, 2K vagy VTN fényezést.</p>
 						<p class="subtitle">Ne feledd, a szín nem csak esztétikai, de láthatósági szempontból is fontos!
 						</p>
 					</div>
@@ -82,14 +81,6 @@
 							</div>
 							<div class="col-sm">
 								<span class="dot" style="background-color: black"></span>
-								<p class="price">0 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio" id="Fekete"
-										(change)="onColorChange($event)" value="0" [disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
 								<span class="dot" style="background-color: white"></span>
 								<span class="dot" style="background-color: black"></span>
 								<p class="price">0 Ft</p>
@@ -100,82 +91,11 @@
 								</div>
 							</div>
 							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: white"></span>
-								<p class="price">0 Ft</p>
+								<h5>2K autófényezés*</h5>
+								<p class="price">30,000 Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-fekete-fehér" value="0"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: yellow"></span>
-								<span class="dot" style="background-color: yellow"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: yellow"></span>
-								<span class="dot" style="background-color: black"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: yellow"></span>
-								<span class="dot" style="background-color: white"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-sárga-fekete" value="20000"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: red"></span>
-								<span class="dot" style="background-color: red"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: red"></span>
-								<span class="dot" style="background-color: black"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
-										[disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<span class="dot" style="background-color: black"></span>
-								<span class="dot" style="background-color: red"></span>
-								<span class="dot" style="background-color: white"></span>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="colorRadio"
-										(change)="onColorChange($event)" id="Fekete-piros-fekete" value="20000"
-										[disabled]="orderProcessed">
+									<input class="form-check-input" type="radio" name="colorRadio" id="2K"
+										(change)="onColorChange($event)" value="30000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -188,8 +108,8 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
+				<p>*2K fényezésnél bármilyen színkód, minta kérhető.</p>
 
 				<div class="container radar">
 					<div>
@@ -200,9 +120,10 @@
 						<p class="subtitle">A Toslon radarok tökéletes képet adnak a vízfenékről, így biztosan oda
 							juttathatod el a
 							szereléket, ahol szerinted a legnagyobb eséllyel található hal. </p>
-						<p class="subtitle"><a [routerLink]="['/radarok']" routerLinkActive="active">Bővebb infóért
-								kattints
-								ide.</a></p>
+						<p class="subtitle">A radarok ára tartalmazza a beszerelés költségét, illetve álványt, táskát és
+							li-po akkumulátort a radarhoz.</p>
+						<p class="subtitle">Ha többet szeretnél tudni a radarokról,<a [routerLink]="['/radarok']"
+								routerLinkActive="active"> kattints ide.</a></p>
 					</div>
 					<div class="grp">
 						<div class="row">
@@ -241,10 +162,10 @@
 				<div class="container autopilot">
 					<div>
 						<h3>Autopilot</h3>
-						<p class="subtitle">Táviranyíthatóba építhető autopilot rendszer, amely 5 etetési helyet képes
-							tárolni és ezekre
-							visszatalálni.</p>
-						<p class="subtitle">A behúzás után gombnyomásra a partra is visszatalál magától.</p>
+						<p class="subtitle">Táviranyíthatóba építhető autopilot rendszer, amely 6 etetési helyet képes
+							tárolni és ezekre visszatalálni.</p>
+						<p class="subtitle">További infóért az autopilotról<a [routerLink]="['/autopilot']"
+								routerLinkActive="active"> kattints ide.</a></p>
 					</div>
 					<div class="grp">
 						<div class="row">
@@ -259,10 +180,10 @@
 							</div>
 							<div class="col-sm">
 								<h5>Félautomata</h5>
-								<p class="price">60,000 Ft</p>
+								<p class="price">70,000 Ft</p>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="boatPilot" id="Félautomata"
-										(change)="onAutopilotChange($event)" value="60000" [disabled]="orderProcessed">
+										(change)="onAutopilotChange($event)" value="70000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
@@ -298,26 +219,26 @@
 							</div>
 							<div class="col-sm">
 								<h5>5000mhA</h5>
-								<p class="price">20,000 Ft</p>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="battery" id="5000mhA"
-										(change)="onBatteryChange($event)" value="20000" [disabled]="orderProcessed">
-								</div>
-							</div>
-							<div class="col-sm">
-								<h5>6200mhA</h5>
 								<p class="price">25,000 Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="battery" id="6200mhA"
+									<input class="form-check-input" type="radio" name="battery" id="5000mhA"
 										(change)="onBatteryChange($event)" value="25000" [disabled]="orderProcessed">
 								</div>
 							</div>
 							<div class="col-sm">
-								<h5>9500mhA</h5>
+								<h5>6200mhA</h5>
 								<p class="price">30,000 Ft</p>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="battery" id="9500mhA"
+									<input class="form-check-input" type="radio" name="battery" id="6200mhA"
 										(change)="onBatteryChange($event)" value="30000" [disabled]="orderProcessed">
+								</div>
+							</div>
+							<div class="col-sm">
+								<h5>8000mhA</h5>
+								<p class="price">35,000 Ft</p>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="battery" id="8000mhA"
+										(change)="onBatteryChange($event)" value="35000" [disabled]="orderProcessed">
 								</div>
 							</div>
 						</div>

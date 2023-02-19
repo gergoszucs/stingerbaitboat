@@ -15,7 +15,7 @@ export class BasicelementsComponent implements OnInit {
 	fragment: string;
 	screenWidth = 640;
 	screenHeight = 390;
-	news: News;
+	news: News = null;
 
 	constructor(router: Router, scrollToService: ScrollToService, config: NgbCarouselConfig, private newsService: NewsService) {
 		router.events.filter(event => event instanceof NavigationEnd)

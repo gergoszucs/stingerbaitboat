@@ -18,6 +18,7 @@ import { RadarComponent } from './radar/radar.component';
 import { BasicComponent } from './basic/basic.component';
 import { MediumComponent } from './medium/medium.component';
 import { MaxComponent } from './max/max.component';
+import { AutopilotComponent } from './autopilot/autopilot.component';
 
 @NgModule({
 	imports: [
@@ -40,7 +41,8 @@ import { MaxComponent } from './max/max.component';
 		RadarComponent,
 		BasicComponent,
 		MediumComponent,
-		MaxComponent
+		MaxComponent,
+		AutopilotComponent
 	],
 	exports: [ComponentsComponent]
 })

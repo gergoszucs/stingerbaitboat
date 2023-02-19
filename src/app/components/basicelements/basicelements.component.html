@@ -34,7 +34,7 @@
 					</ng-template>
 					<ng-template ngbSlide>
 						<div>
-							<img src="./assets/img/carousel3.jpg">
+							<img src="./assets/img/hajo_sor.jpg">
 							<div class="carousel-caption">
 								<p></p>
 							</div>
@@ -65,7 +65,7 @@
 				<li class="list-group-item"><i class="fa fa-check"></i>Erős led fények elöl-hátul, távirányítóról
 					kapcsolható</li>
 				<li class="list-group-item"><i class="fa fa-check"></i>Masszív hajó állvány</li>
-				<li class="list-group-item"><i class="fa fa-check"></i>Teljes körű, 2 éves garacia</li>
+				<li class="list-group-item"><i class="fa fa-check"></i>Teljes körű, 2 + 1 éves garancia</li>
 				<li class="list-group-item"><i class="fa fa-check"></i>Minden hajó fóliásan kerül átadásra</li>
 			</ul>
 			<br>
@@ -92,7 +92,7 @@
 						<th scope="row"> Akkumulátor</th>
 						<td class="table-item">5000mhA Li-Po</td>
 						<td class="table-item">5000mhA Li-Po</td>
-						<td class="table-item">9500mhA Li-Po</td>
+						<td class="table-item">8000mhA Li-Po</td>
 					</tr>
 					<tr>
 						<th scope="row">Behúzások száma</th>
@@ -109,7 +109,7 @@
 		</div>
 
 
-		<div *ngIf="news" class="col news text-center">
+		<div *ngIf="news && news.isEnabled" class="col news text-center">
 			<h3 class="news-title">Újdonság!</h3>
 			<div class="news-text">
 				<p>{{news.text}}</p>

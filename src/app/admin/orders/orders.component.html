@@ -2,10 +2,10 @@
     <div class="main">
         <div class="container">
             <div class="text-center">
-                <h3>Folyamatban lévő rendelések</h3>
+                <h3>Folyamatban lévő</h3>
             </div>
             <div style="margin-top: 20px">
-                <p *ngIf="findActive(orders).length === 0; else activeOrders">Jelenleg nincs folyamatban lévő rendelés
+                <p *ngIf="findActive(orders).length === 0; else activeOrders">Jelenleg nincs folyamatban lévő rendelés.
                 </p>
                 <ng-template #activeOrders>
                     <div class="table-responsive">
@@ -136,11 +136,12 @@
 
 
                 <div class="text-center">
-                    <h3>Teljesített rendelések</h3>
+                    <h3>Garanciális</h3>
                 </div>
                 <div style="margin-top: 20px">
-                    <p *ngIf="findFulfilled(orders).length === 0; else fulfilledOrders">Jelenleg nincs teljesített
-                        rendelés
+                    <p *ngIf="findFulfilled(orders).length === 0; else fulfilledOrders">Jelenleg nincs teljesített, még
+                        garanciális
+                        rendelés.
                     </p>
                     <ng-template #fulfilledOrders>
                         <div class="table-responsive">
@@ -180,11 +181,12 @@
 
 
                 <div class="text-center">
-                    <h3>Lejárt garanciás rendelések</h3>
+                    <h3 style="margin-bottom:0">Karbantartás aktuális</h3>
+                    <p>(Kevesebb, mint 2 hónap van hátra az első vagy másod éves garancia lejártáig)</p>
                 </div>
                 <div style="margin-top: 20px">
-                    <p *ngIf="findWarrantyIssues(orders).length === 0; else warrantyIssues">Jelenleg nincs lejárt
-                        garanciájú rendelés
+                    <p *ngIf="findWarrantyIssues(orders).length === 0; else warrantyIssues">Jelenleg nincs
+                        karbantartásra szoruló hajó.
                     </p>
                     <ng-template #warrantyIssues>
                         <div class="table-responsive">
@@ -231,10 +233,22 @@
                                                     <p class="edit-title"><strong>Hajó:</strong></p>
                                                     <p class="value">{{order.boat}}</p>
                                                 </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Rendelés:</strong></p>
+                                                    <p>{{order.orderDate | date:'yyyy-MM-dd'}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Teljesítés:</strong></p>
+                                                    <p>{{order.fulfilledDate | date:'yyyy-MM-dd'}} </p>
+                                                </div>
+                                                <div>
+                                                    <p class="edit-title"><strong>Garancia:</strong></p>
+                                                    <p>{{order.warrantyDate | date:'yyyy-MM-dd'}} </p>
+                                                </div>
                                                 <div *ngIf="firstYearWarrantyExpired(order)">
                                                     <p class="edit-title"><strong>Első éves karbantartás:</strong></p>
                                                     <p class="value">Eltelt 1 év
-                                                        a rendelés teljesítése óta.</p>
+                                                        a rendelés teljesítése óta.&nbsp;&nbsp;</p>
                                                     <i class="fa fa-check" style="color: green; margin-left: 8px"
                                                         (click)="onFirstWarrantyOk(order)" data-toggle="tooltip"
                                                         data-placement="top" title="Átvizsgálva"></i>
@@ -243,12 +257,53 @@
                                                     <p class="edit-title"><strong>Második éves karbantartás:</strong>
                                                     </p>
                                                     <p *ngIf="secondYearWarrantyExpired(order)" class="value">Eltelt 2
-                                                        év a rendelés teljesítése óta.</p>
+                                                        év a rendelés teljesítése óta.&nbsp;&nbsp;</p>
                                                     <i class="fa fa-check" style="color: green"
                                                         (click)="onSecondWarrantyOk(order)" data-toggle="tooltip"
                                                         data-placement="top" title="Átvizsgálva"></i>
                                                 </div>
                                             </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </div>
+
+                <div class="text-center">
+                    <h3>Lejárt garancia</h3>
+                </div>
+                <div style="margin-top: 20px">
+                    <p *ngIf="findExpiredWarranty(orders).length === 0; else outOfWarranty">Jelenleg nincs lejárt
+                        garanciájú rendelés.
+                    </p>
+                    <ng-template #outOfWarranty>
+                        <div class="table-responsive">
+                            <table class="table" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="col-md-4">Név</th>
+                                        <th scope="col" class="col-md-4">Hajó</th>
+                                        <th scope="col" class="col-md-4">Teljesítés</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let order of findExpiredWarranty(orders)">
+                                        <tr class="order-row" (click)="onView(order.id)">
+                                            <td>
+                                                <p>{{order.name}} </p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.boat}}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{order.fulfilledDate | date:'yyyy-MM-dd'}} </p>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="expandedOrder === order.id">
+                                            <ng-container *ngTemplateOutlet="editableRow;context:{order: order}">
+                                            </ng-container>
                                         </tr>
                                     </ng-container>
                                 </tbody>
@@ -332,13 +387,15 @@
                 <p *ngIf="!orderToEdit" class="value">{{ order.orderDate !== null ?
                     (order.orderDate | date:'yyyy-MM-dd') : "-"}} </p>
                 <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.orderDate !== null ?
+                    (order.orderDate | date:'yyyy-MM-dd') : '-'" [displayDate]="order.orderDate !== null ?
                     (order.orderDate | date:'yyyy-MM-dd') : '-'" (onChange)="parseOrderDate($event)"></dp-date-picker>
             </div>
             <div>
                 <p class="edit-title"><strong>Teljesítés:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{ order.fulfilledDate !== null ?
                     (order.fulfilledDate | date:'yyyy-MM-dd') : "-"}}</p>
-                <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.fulfilledDate !== null ?
+                <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [displayDate]="order.fulfilledDate !== null ?
+                    (order.fulfilledDate | date:'yyyy-MM-dd') : '-'" [placeholder]="order.fulfilledDate !== null ?
                     (order.fulfilledDate | date:'yyyy-MM-dd') : '-'"
                     (onChange)="parseFulfilledDate($event)"></dp-date-picker>
             </div>
@@ -347,6 +404,7 @@
                 <p *ngIf="!orderToEdit" class="value">{{ order.warrantyDate !== null ?
                     (order.warrantyDate | date:'yyyy-MM-dd') : "-"}}</p>
                 <dp-date-picker *ngIf="orderToEdit" theme="dp-material" [config]="config" [placeholder]="order.warrantyDate !== null ?
+                    (order.warrantyDate | date:'yyyy-MM-dd') : '-'" [displayDate]="order.warrantyDate !== null ?
                     (order.warrantyDate | date:'yyyy-MM-dd') : '-'"
                     (onChange)="parseWarrantyDate($event)"></dp-date-picker>
             </div>
@@ -362,8 +420,8 @@
                     (change)="parseSecondWarranty($event)" />
             </div>
             <div class="order-actions">
-                <i *ngIf="!orderToEdit" class="fa fa-check" style="color: green" (click)="onFulfill(order)"
-                    data-toggle="tooltip" data-placement="top" title="Teljesítés"></i>
+                <i *ngIf="!orderToEdit && !order.fulfilledDate" class="fa fa-check" style="color: green"
+                    (click)="onFulfill(order)" data-toggle="tooltip" data-placement="top" title="Teljesítés"></i>
                 <i *ngIf="!orderToEdit" class="fa fa-pencil" style="color:orange" (click)="onEdit(order)"
                     data-toggle="tooltip" data-placement="top" title="Szerkesztés"></i>
                 <i *ngIf="orderToEdit" class="fa fa-download" style="color:green" (click)="onSave()"

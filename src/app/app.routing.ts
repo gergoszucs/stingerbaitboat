@@ -20,6 +20,7 @@ import { RadarComponent } from './components/radar/radar.component';
 import { BasicComponent } from './components/basic/basic.component';
 import { MediumComponent } from './components/medium/medium.component';
 import { MaxComponent } from './components/max/max.component';
+import { AutopilotComponent } from './components/autopilot/autopilot.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
 	{ path: 'hajo/medium', component: MediumComponent },
 	{ path: 'hajo/max', component: MaxComponent },
 	{ path: 'radarok', component: RadarComponent },
+	{ path: 'autopilot', component: AutopilotComponent },
 	{ path: 'adatkezeles', component: PrivacyComponent },
 	{ path: 'rendeles', component: OrderComponent },
 	{ path: 'kepek', component: PhotoComponent },

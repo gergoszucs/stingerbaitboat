@@ -31,6 +31,9 @@
 					<a [routerLink]="['/radarok']" class="nav-link">Radarok</a>
 				</li>
 				<li *ngIf="!isAdmin" class="nav-item">
+					<a [routerLink]="['/autopilot']" class="nav-link">Autopilot</a>
+				</li>
+				<li *ngIf="!isAdmin" class="nav-item">
 					<a [routerLink]="['/rendeles']" class="nav-link">Rendelés</a>
 				</li>
 				<li *ngIf="!isAdmin" class="nav-item">

@@ -47,13 +47,13 @@ export class OrderComponent implements OnInit {
 
 	light: Item = {
 		name: "Reflektor",
-		price: 15000
+		price: 20000
 	}
 	lightChecked = false;
 
 	seaweed: Item = {
 		name: "Hínárvédő",
-		price: 7000
+		price: 10000
 	}
 	seaweedChecked = false;
 
@@ -242,12 +242,18 @@ export class OrderComponent implements OnInit {
 		// Optional parts
 		if (order.boat.includes("Basic")) {
 			this.updateItem("200W", 1, lowCountItems);
+			this.updateItem("5000", 1, lowCountItems);
+			this.updateItem("Szabályzó kefés", 1, lowCountItems);
 		}
 		if (order.boat.includes("Medium")) {
 			this.updateItem("1600W", 1, lowCountItems);
+			this.updateItem("5000", 1, lowCountItems);
+			this.updateItem("80A BL", 1, lowCountItems);
 		}
 		if (order.boat.includes("Max")) {
 			this.updateItem("2000W", 1, lowCountItems);
+			this.updateItem("8000", 1, lowCountItems);
+			this.updateItem("120A BL", 1, lowCountItems);
 		}
 
 		if (order.seaweed) {
@@ -266,35 +272,13 @@ export class OrderComponent implements OnInit {
 		if (order.battery.includes("6200")) {
 			this.updateItem("6200", 1, lowCountItems);
 		}
-		if (order.battery.includes("9500")) {
-			this.updateItem("9500", 1, lowCountItems);
+		if (order.battery.includes("8000")) {
+			this.updateItem("8000", 1, lowCountItems);
 		}
 
 		if (lowCountItems.length > 0) {
 			this.mailService.inventoryThresholdReached(lowCountItems);
 		}
-
-		// this.inventoryService.getBoatParts().subscribe(data => {
-		// 	let parts = data.map(e => {
-		// 		return {
-		// 			id: e.payload.doc.id,
-		// 			parts: [e.payload.doc.data()]
-		// 		};
-		// 	});
-
-		// 	let boat = parts.find(p => p.id === boatType)
-
-		// 	if (!boat) {
-		// 		return;
-		// 	}
-
-		// 	let itemMap = boat.parts[0] as any;
-
-		// 	// Fix parts
-		// 	for (const item in itemMap) {
-		// 		this.updateItem(item, itemMap[item], lowCountItems);
-		// 	}
-		// });
 	}
 
 	private updateItem(name: string, required: number, lowCountItems: InventoryItem[]) {

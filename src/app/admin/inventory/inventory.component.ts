@@ -34,7 +34,7 @@ export class InventoryComponent implements OnInit {
     }
 
     onEdit(item: InventoryItem) {
-        this.itemToEdit = item;
+        this.itemToEdit = { ...item };
     }
 
     onCancel() {

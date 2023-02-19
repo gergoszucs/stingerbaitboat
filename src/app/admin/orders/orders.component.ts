@@ -93,7 +93,7 @@ export class OrdersComponent implements OnInit {
 
         if (!this.orderToEdit.warrantyDate) {
             var tempDate = new Date();
-            tempDate.setFullYear((this.orderToEdit.fulfilledDate as Date).getFullYear() + 3)
+            tempDate.setFullYear((this.orderToEdit.fulfilledDate as Date).getFullYear() + 2)
             this.orderToEdit.warrantyDate = tempDate;
         }
 
@@ -140,8 +140,8 @@ export class OrdersComponent implements OnInit {
             name: this.orderToCreate.name,
             orderDate: this.orderToCreate.orderDate.toString(),
             warrantyDate: this.orderToCreate.warrantyDate.toString(),
-            warrantyFirst: this.orderToCreate.warrantyFirst,
-            warrantySecond: this.orderToCreate.warrantySecond
+            warrantyFirst: this.orderToCreate.warrantyFirst ?? false,
+            warrantySecond: this.orderToCreate.warrantySecond ?? false
         }
 
         this.orderService.create(this.orderToCreate);
@@ -153,7 +153,20 @@ export class OrdersComponent implements OnInit {
     }
 
     findFulfilled(orders: Order[]): Order[] {
-        return orders.filter(o => o.fulfilledDate !== null);
+        return orders.filter(o => o.fulfilledDate !== null && this.isOrderIn2YearsOr3WithChecks(o));
+    }
+
+    findExpiredWarranty(orders: Order[]): Order[] {
+        return orders.filter(o => o.fulfilledDate !== null && !this.isOrderIn2YearsOr3WithChecks(o));
+    }
+
+    isOrderIn2YearsOr3WithChecks(o: Order) {
+        const twoYear = new Date();
+        twoYear.setFullYear(twoYear.getFullYear() - 2);
+        const threeYear = new Date();
+        threeYear.setFullYear(threeYear.getFullYear() - 3);
+        const fullGuarantee = !!o.warrantyFirst && !!o.warrantySecond && o.fulfilledDate > threeYear;
+        return (o.fulfilledDate > twoYear || fullGuarantee);
     }
 
     findWarrantyIssues(orders: Order[]): Order[] {
@@ -165,11 +178,11 @@ export class OrdersComponent implements OnInit {
             }
 
             let oneYearLater = new Date(o.fulfilledDate);
-            oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+            oneYearLater.setMonth(oneYearLater.getMonth() + 10);
             let twoYearLater = new Date(o.fulfilledDate);
-            twoYearLater.setFullYear(twoYearLater.getFullYear() + 2);
-            let firstYearOff = (currentDate > oneYearLater && !o.warrantyFirst);
-            let secondYearOff = (currentDate > twoYearLater && !o.warrantySecond);
+            twoYearLater.setMonth(oneYearLater.getMonth() + 10);
+            let firstYearOff = (currentDate >= oneYearLater && !o.warrantyFirst);
+            let secondYearOff = (currentDate >= twoYearLater && !o.warrantySecond);
             return firstYearOff || secondYearOff;
         });
     }
@@ -177,7 +190,7 @@ export class OrdersComponent implements OnInit {
     firstYearWarrantyExpired(order: Order): boolean {
         let currentDate = new Date();
         let oneYearLater = new Date(order.fulfilledDate);
-        oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+        oneYearLater.setMonth(oneYearLater.getMonth() + 10);
         let firstYearOff = (currentDate > oneYearLater && !order.warrantyFirst);
         return firstYearOff;
     }
@@ -185,17 +198,35 @@ export class OrdersComponent implements OnInit {
     secondYearWarrantyExpired(order: Order): boolean {
         let currentDate = new Date();
         let twoYearLater = new Date(order.fulfilledDate);
-        twoYearLater.setFullYear(twoYearLater.getFullYear() + 2);
+        twoYearLater.setFullYear(twoYearLater.getFullYear() + 1);
+        twoYearLater.setMonth(twoYearLater.getMonth() + 10);
         let secondYearOff = (currentDate > twoYearLater && !order.warrantySecond);
         return secondYearOff;
     }
 
     onFirstWarrantyOk(order: Order): void {
         order.warrantyFirst = true;
+        if (order.fulfilledDate)
+            order.fulfilledDate = order.fulfilledDate.toString();
+        if (order.warrantyDate)
+            order.warrantyDate = order.warrantyDate.toString();
+        if (order.orderDate)
+            order.orderDate = order.orderDate.toString();
+        this.orderService.update(order);
     }
 
     onSecondWarrantyOk(order: Order): void {
         order.warrantySecond = true;
+        if (order.fulfilledDate)
+            order.fulfilledDate = order.fulfilledDate.toString();
+        if (order.warrantyDate) {
+            const dateCopy = new Date(order.warrantyDate);
+            dateCopy.setFullYear(dateCopy.getFullYear() + 1);
+            order.warrantyDate = dateCopy.toString();
+        }
+        if (order.orderDate)
+            order.orderDate = order.orderDate.toString();
+        this.orderService.update(order);
     }
 
     onCancelNew() {
@@ -346,13 +377,13 @@ export class OrdersComponent implements OnInit {
         this.orderToCreate.warrantySecond = event.target.checked;
     }
 
-    getCompletedWarrantyDate(order: Order) {
-        if (order.warrantyDate) {
-            return order.warrantyDate;
-        }
+    // getCompletedWarrantyDate(order: Order) {
+    //     if (order.warrantyDate) {
+    //         return order.warrantyDate;
+    //     }
 
-        var tempDate = new Date(order.fulfilledDate);
-        tempDate.setFullYear((order.fulfilledDate as Date).getFullYear() + 3)
-        return tempDate;
-    }
+    //     var tempDate = new Date(order.fulfilledDate);
+    //     tempDate.setFullYear((order.fulfilledDate as Date).getFullYear() + 3)
+    //     return tempDate;
+    // }
 }
