@@ -8,7 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class MailService {
     constructor(private firestore: AngularFirestore, private decimalPipe: DecimalPipe, private datePipe: DatePipe) { }
 
-    public sendMail(order: Order) {
+    public sendOrderConfirmation(order: Order) {
         var expectedFullfillmentDate = new Date(order.orderDate);
         expectedFullfillmentDate.setDate(expectedFullfillmentDate.getDate() + 45)
 
@@ -85,7 +85,50 @@ export class MailService {
         });
     }
 
-    public inventoryThresholdReached(items: InventoryItem[]) {
+    public sendOrderPlacedNotification(order: Order) {
+        var expectedFullfillmentDate = new Date(order.orderDate);
+        expectedFullfillmentDate.setDate(expectedFullfillmentDate.getDate() + 45)
+
+        return this.firestore.collection('mail').add({
+            to: 'stingerbaitboat@gmail.com',
+            message: {
+                subject: `Új rendelés érkezett (${order.name})!`,
+                html: `
+                <h4>Személyes adatok</h4>
+                
+                <ul>
+                    <li><strong>Név:</strong> ${order.name}</li>
+                    <li><strong>Email:</strong> ${order.email}</li>
+                    <li><strong>Telefon:</strong> ${order.phone}</li>
+                    <li><strong>Cím:</strong> ${order.address}</li>
+                </ul>
+                
+                <h4>Hajó és tartozékai</h4>
+                
+                <ul>
+                    <li><strong>Etetőhajó:</strong> ${order.boat}</li>
+                    <li><strong>Szín:</strong> ${order.color}</li>
+                    <li><strong>Radar:</strong> ${order.radar === "Nem kérem" ? 'Nem kérem ❌' : order.radar}</li>
+                    <li><strong>Autopilóta:</strong> ${order.autopilot === "Nem kérem" ? 'Nem kérem ❌' : order.autopilot}</li>
+                    <li><strong>Egyéb kiegészítők</strong>
+                    <ul>
+                        <li><strong>Pót akkumulátor:</strong> ${order.battery === "Nem kérem" ? 'Nem kérem ❌' : order.battery}</li>
+                        <li><strong>Hajó és távírányító táska:</strong> ${order.bag ? 'Kérem ✅' : 'Nem kérem ❌'}</li>
+                        <li><strong>Reflektor:</strong> ${order.light ? 'Kérem ✅' : 'Nem kérem ❌'}</li>
+                        <li><strong>Hínárvédő:</strong> ${order.seaweed ? 'Kérem ✅' : 'Nem kérem ❌'}</li>
+                    </ul>
+                    </li>
+                </ul>
+                
+                <p>Rendelés összege: ${this.decimalPipe.transform(order.price, '1.0-0') + " Ft"}</p>
+
+                <p>Rendeléshez ígért várható elkészülés: ${this.datePipe.transform(expectedFullfillmentDate, 'yyyy-MM-dd')}.</p>
+                `,
+            },
+        });
+    }
+
+    public sendInventoryThresholdReached(items: InventoryItem[]) {
         let itemList = "";
 
         items.forEach(item => {
@@ -93,7 +136,7 @@ export class MailService {
         });
 
         return this.firestore.collection('mail').add({
-            to: 'gergobenceszucs@gmail.com',
+            to: 'stingerbaitboat@gmail.com',
             message: {
                 subject: "Alkatrész hiány",
                 html: `

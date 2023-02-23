@@ -219,9 +219,10 @@ export class OrderComponent implements OnInit {
 			warrantyDate: ''
 		};
 
-		this.mailService.sendMail(order).finally(() => {
+		this.mailService.sendOrderConfirmation(order).finally(() => {
 			this.orderProcessed = true;
 			this.updateInventoryOnPurchase(order);
+			this.mailService.sendOrderPlacedNotification(order);
 			this.orderService.create(order);
 		})
 	}
@@ -277,7 +278,7 @@ export class OrderComponent implements OnInit {
 		}
 
 		if (lowCountItems.length > 0) {
-			this.mailService.inventoryThresholdReached(lowCountItems);
+			this.mailService.sendInventoryThresholdReached(lowCountItems);
 		}
 	}
 
