@@ -9,7 +9,7 @@
 					<p class="edit-title"><strong>Szöveg</strong></p>
 					<p *ngIf="!isEditing" class="value">{{sale.text}}</p>
 					<textarea *ngIf="isEditing" class="wideinput" [value]="sale.text"
-						(keyup)="parseText($event)"></textarea>
+						(input)="parseText($event)"></textarea>
 				</div>
 				<div>
 					<p class="edit-title"><strong>Kedvezmény </strong><i style="color:gray">(ha csak valamit ki

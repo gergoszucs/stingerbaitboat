@@ -49,43 +49,43 @@
                     </div>
                     <div>
                         <p class="edit-title"><strong>Név:</strong></p>
-                        <input (keyup)="parseNewName($event)" />
+                        <input (input)="parseNewName($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Telefon:</strong></p>
-                        <input (keyup)="parseNewPhone($event)" />
+                        <input (input)="parseNewPhone($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Email:</strong></p>
-                        <input (keyup)="parseNewEmail($event)" />
+                        <input (input)="parseNewEmail($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Cím:</strong></p>
-                        <input (keyup)="parseNewAddress($event)" />
+                        <input (input)="parseNewAddress($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Hajó:</strong></p>
-                        <input (keyup)="parseNewBoat($event)" />
+                        <input (input)="parseNewBoat($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Ár:</strong></p>
-                        <input type="number" (keyup)="parseNewPrice($event)" />
+                        <input type="number" (input)="parseNewPrice($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Szín:</strong></p>
-                        <input (keyup)="parseNewColor($event)" />
+                        <input (input)="parseNewColor($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Radar:</strong></p>
-                        <input (keyup)="parseNewRadar($event)" />
+                        <input (input)="parseNewRadar($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Autópilóta:</strong></p>
-                        <input (keyup)="parseNewAutopilot($event)" />
+                        <input (input)="parseNewAutopilot($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Akkumulátor:</strong></p>
-                        <input (keyup)="parseNewBattery($event)" />
+                        <input (input)="parseNewBattery($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Hínárvédő:</strong></p>
@@ -320,53 +320,53 @@
             <div>
                 <p class="edit-title"><strong>Név:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.name}}</p>
-                <input *ngIf="orderToEdit" [value]="order.name" (keyup)="parseName($event)" />
+                <input *ngIf="orderToEdit" [value]="order.name" (input)="parseName($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Telefon:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.phone}}</p>
-                <input *ngIf="orderToEdit" [value]="order.phone" (keyup)="parsePhone($event)" />
+                <input *ngIf="orderToEdit" [value]="order.phone" (input)="parsePhone($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Email:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.email}}</p>
-                <input *ngIf="orderToEdit" [value]="order.email" (keyup)="parseEmail($event)" />
+                <input *ngIf="orderToEdit" [value]="order.email" (input)="parseEmail($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Cím:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.address}}</p>
-                <input *ngIf="orderToEdit" [value]="order.address" (keyup)="parseAddress($event)" />
+                <input *ngIf="orderToEdit" [value]="order.address" (input)="parseAddress($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Hajó:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.boat}}</p>
-                <input *ngIf="orderToEdit" [value]="order.boat" (keyup)="parseBoat($event)" />
+                <input *ngIf="orderToEdit" [value]="order.boat" (input)="parseBoat($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Ár:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.price | number:'1.0-0'}}
                     Ft</p>
-                <input *ngIf="orderToEdit" [value]="order.price" (keyup)="parsePrice($event)" />
+                <input *ngIf="orderToEdit" [value]="order.price" (input)="parsePrice($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Szín:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.color}}</p>
-                <input *ngIf="orderToEdit" [value]="order.color" (keyup)="parseColor($event)" />
+                <input *ngIf="orderToEdit" [value]="order.color" (input)="parseColor($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Radar:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.radar}} </p>
-                <input *ngIf="orderToEdit" [value]="order.radar" (keyup)="parseRadar($event)" />
+                <input *ngIf="orderToEdit" [value]="order.radar" (input)="parseRadar($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Autopilot:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.autopilot}}</p>
-                <input *ngIf="orderToEdit" [value]="order.autopilot" (keyup)="parseAutopilot($event)" />
+                <input *ngIf="orderToEdit" [value]="order.autopilot" (input)="parseAutopilot($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Akkumulátor:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{order.battery}}</p>
-                <input *ngIf="orderToEdit" [value]="order.battery" (keyup)="parseBattery($event)" />
+                <input *ngIf="orderToEdit" [value]="order.battery" (input)="parseBattery($event)" />
             </div>
             <div>
                 <p class="edit-title"><strong>Hínárvédő:</strong></p>

@@ -8,10 +8,10 @@
 				<div class="edit-div col">
 					<span class="edit-title"><strong>Drive link</strong> <i style="word-break: break-word;">(pl:
 							https://drive.google.com/file/d/1YbtiXSJGZmn7iKM1BCqW6u4iyfGwT_WE/view?usp=sharing)</i></span>
-					<input style="width:250px" (keyup)="parsePhoto($event)" />
+					<input style="width:250px" (input)="parsePhoto($event)" />
 					<br>
 					<span class="edit-title"><strong>Kép leírás</strong></span>
-					<textarea style="width:250px" (keyup)="parseTitle($event)"></textarea>
+					<textarea style="width:250px" (input)="parseTitle($event)"></textarea>
 					<div class="row">
 						<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
 							data-placement="top" title="Mentés"></i>

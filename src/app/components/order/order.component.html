@@ -404,13 +404,13 @@
 									<label for="nameInput">Név</label>
 									<input type="text" class="form-control" id="nameInput"
 										[ngClass]="{'invalid-input' : showSubmitError && !name}"
-										(keyup)="nameUpdated($event)" placeholder="Add meg a nevedet" required>
+										(input)="nameUpdated($event)" placeholder="Add meg a nevedet" required>
 								</div>
 								<div class="form-group">
 									<label for="emailInput">Email</label>
 									<input type="email" class="form-control" id="emailInput"
 										[ngClass]="{'invalid-input' : showSubmitError && !email}"
-										(keyup)="emailUpdated($event)" aria-describedby="emailHelp"
+										(input)="emailUpdated($event)" aria-describedby="emailHelp"
 										placeholder="Add meg az email címed" required>
 									<small id="emailHelp" class="form-text text-muted">Kérlek ellenőrizd a helyességét,
 										ide
@@ -420,14 +420,14 @@
 									<label for="addressInput">Szállítási cím</label>
 									<input type="text" class="form-control" id="addressInput"
 										[ngClass]="{'invalid-input' : showSubmitError && !address}"
-										(keyup)="addressUpdated($event)" placeholder="Add meg hová küldhetjük a hajót"
+										(input)="addressUpdated($event)" placeholder="Add meg hová küldhetjük a hajót"
 										required>
 								</div>
 								<div class="form-check">
 									<label for="phoneInput">Telefon</label>
 									<input type="tel" class="form-control" id="phoneInput"
 										[ngClass]="{'invalid-input' : showSubmitError && !phone}"
-										(keyup)="phoneUpdated($event)" placeholder="Add meg a telefon számod" required>
+										(input)="phoneUpdated($event)" placeholder="Add meg a telefon számod" required>
 								</div>
 								<div class="button-wrapper">
 									<span class="submit-error" *ngIf="showSubmitError && !canSubmitOrder">

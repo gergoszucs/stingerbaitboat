@@ -9,17 +9,17 @@
 					<p class="edit-title"><strong>Szöveg</strong></p>
 					<p *ngIf="!isEditing" class="value">{{news.text}}</p>
 					<textarea *ngIf="isEditing" class="wideinput" [value]="news.text"
-						(keyup)="parseText($event)"></textarea>
+						(input)="parseText($event)"></textarea>
 				</div>
 				<div>
 					<p class="edit-title"><strong>Kép (Google Drive URL)</strong></p>
 					<p *ngIf="!isEditing" class="value">{{news.photoUrl}}</p>
-					<input *ngIf="isEditing" class="wideinput" [value]="news.photoUrl" (keyup)="parsePhoto($event)" />
+					<input *ngIf="isEditing" class="wideinput" [value]="news.photoUrl" (input)="parsePhoto($event)" />
 				</div>
 				<div>
 					<p class="edit-title"><strong>Videó (Youtube ID)</strong></p>
 					<p *ngIf="!isEditing" class="value">{{news.videoUrl}}</p>
-					<input *ngIf="isEditing" class="wideinput" [value]="news.videoUrl" (keyup)="parseVideo($event)" />
+					<input *ngIf="isEditing" class="wideinput" [value]="news.videoUrl" (input)="parseVideo($event)" />
 				</div>
 				<div>
 					<p class="edit-title"><strong>Aktív</strong></p>

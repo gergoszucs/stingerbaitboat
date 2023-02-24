@@ -24,17 +24,17 @@
                                 <td>
                                     <p *ngIf="item.belugaReq > 0 && !isBeingEdited(item.id)">{{item.belugaReq}}</p>
                                     <input *ngIf="item.belugaReq > 0 && isBeingEdited(item.id)" [value]="item.belugaReq"
-                                        (keyup)="parseBelugaCount($event)" type="number" />
+                                        (input)="parseBelugaCount($event)" type="number" />
                                 </td>
                                 <td>
                                     <p *ngIf="!isBeingEdited(item.id)">{{item.count}}</p>
                                     <input *ngIf="isBeingEdited(item.id)" [value]="item.count"
-                                        (keyup)="parseCount($event)" type="number" />
+                                        (input)="parseCount($event)" type="number" />
                                 </td>
                                 <td>
                                     <p *ngIf="!isBeingEdited(item.id)">{{item.threshold}}</p>
                                     <input *ngIf="isBeingEdited(item.id)" [value]="item.threshold"
-                                        (keyup)="parseThreshold($event)" type="number" />
+                                        (input)="parseThreshold($event)" type="number" />
                                 </td>
                                 <td>
                                     <i *ngIf="!isBeingEdited(item.id)" class="fa fa-pencil" style="color:orange"
@@ -63,19 +63,19 @@
                     </div>
                     <div>
                         <p class="edit-title"><strong>Név:</strong></p>
-                        <input (keyup)="parseNewName($event)" />
+                        <input (input)="parseNewName($event)" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Beluga:</strong></p>
-                        <input (keyup)="parseNewBelugaCount($event)" type="number" />
+                        <input (keyuinputp)="parseNewBelugaCount($event)" type="number" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Készlet:</strong></p>
-                        <input (keyup)="parseNewCount($event)" type="number" />
+                        <input (input)="parseNewCount($event)" type="number" />
                     </div>
                     <div>
                         <p class="edit-title"><strong>Határérték:</strong></p>
-                        <input (keyup)="parseNewThreshold($event)" type="number" />
+                        <input (input)="parseNewThreshold($event)" type="number" />
                     </div>
                     <div class="item-actions">
                         <i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
