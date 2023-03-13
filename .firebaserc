@@ -1,14 +1,19 @@
 {
+  "projects": {
+    "hu": "stinger-dcdf2",
+    "de": "stingerde"
+  },
   "targets": {
     "stinger-dcdf2": {
       "hosting": {
-        "pk2-angular": [
+        "hu": [
           "stinger-dcdf2"
+        ],
+        "de": [
+          "stingerde"
         ]
       }
     }
   },
-  "projects": {
-    "default": "stinger-dcdf2"
-  }
+  "etags": {}
 }
