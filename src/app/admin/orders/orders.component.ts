@@ -149,15 +149,18 @@ export class OrdersComponent implements OnInit {
     }
 
     findActive(orders: Order[]): Order[] {
-        return orders.filter(o => o.fulfilledDate === null);
+        return orders.filter(o => o.fulfilledDate === null)
+            .sort((a, b) => new Date(a.orderDate).getTime() - new Date(b.orderDate).getTime());
     }
 
     findFulfilled(orders: Order[]): Order[] {
-        return orders.filter(o => o.fulfilledDate !== null && this.isOrderIn2YearsOr3WithChecks(o));
+        return orders.filter(o => o.fulfilledDate !== null && this.isOrderIn2YearsOr3WithChecks(o))
+            .sort((a, b) => new Date(a.fulfilledDate).getTime() - new Date(b.fulfilledDate).getTime());
     }
 
     findExpiredWarranty(orders: Order[]): Order[] {
-        return orders.filter(o => o.fulfilledDate !== null && !this.isOrderIn2YearsOr3WithChecks(o));
+        return orders.filter(o => o.fulfilledDate !== null && !this.isOrderIn2YearsOr3WithChecks(o))
+            .sort((a, b) => new Date(a.fulfilledDate).getTime() - new Date(b.fulfilledDate).getTime());
     }
 
     isOrderIn2YearsOr3WithChecks(o: Order) {
@@ -184,7 +187,7 @@ export class OrdersComponent implements OnInit {
             let firstYearOff = (currentDate >= oneYearLater && !o.warrantyFirst);
             let secondYearOff = (currentDate >= twoYearLater && !o.warrantySecond);
             return firstYearOff || secondYearOff;
-        });
+        }).sort((a, b) => new Date(a.fulfilledDate).getTime() - new Date(b.fulfilledDate).getTime());
     }
 
     firstYearWarrantyExpired(order: Order): boolean {
