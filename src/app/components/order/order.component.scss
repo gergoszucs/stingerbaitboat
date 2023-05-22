@@ -19,6 +19,21 @@
 	}
 }
 
+.coupon-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 12px;
+
+	input {
+		width: 200px;
+	}
+
+	>div {
+		margin-bottom: 12px;
+	}
+}
+
 a {
 	text-decoration: none;
 }
@@ -79,7 +94,7 @@ h5:not(.basket),
 		margin: 4px 0 8px 0;
 	}
 
-	input {
+	input[type="checkbox"] {
 		height: 17px;
 		width: 17px;
 	}

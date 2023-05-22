@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CouponService } from 'app/services/coupon.service';
 import { InventoryService } from 'app/services/inventory.service';
 import { MailService } from 'app/services/mail.service';
 import { OrderService } from 'app/services/order.service';
@@ -12,6 +13,7 @@ import { SaleService } from 'app/services/sale.service';
 
 export class OrderComponent implements OnInit {
 	inventoryItems: InventoryItem[] = [];
+	coupons: Coupon[] = [];
 	sale: Sale;
 
 	boat: Item = {
@@ -66,9 +68,14 @@ export class OrderComponent implements OnInit {
 	canSubmitOrder = false;
 	showSubmitError = false;
 	orderProcessed = false;
-	isSale = false;
+	isGlobalSale = false;
+	discount: number;
+	coupon: Coupon;
+	couponName: string;
+	couponMessage: string;
 
-	constructor(private mailService: MailService, private orderService: OrderService, private inventoryService: InventoryService, private saleService: SaleService) {
+	constructor(private mailService: MailService, private orderService: OrderService, private inventoryService: InventoryService,
+		private saleService: SaleService, public couponService: CouponService) {
 		this.totalPrice = this.boat.price + this.color.price + this.radar.price + this.autopilot.price
 			+ this.battery.price;
 	}
@@ -85,11 +92,21 @@ export class OrderComponent implements OnInit {
 
 		this.saleService.get().subscribe(sale => {
 			this.sale = sale;
-			this.isSale = this.sale && this.sale.isEnabled && this.sale.discount > 0;
+			this.isGlobalSale = this.sale && this.sale.isEnabled && this.sale.discount > 0;
 
-			if (this.isSale) {
+			if (this.isGlobalSale) {
+				this.discount = this.sale.discount;
 				this.discountedPrice = this.totalPrice * ((100 - this.sale.discount) / 100);
 			}
+		});
+
+		this.couponService.getAll().subscribe(data => {
+			this.coupons = data.map(e => {
+				return {
+					id: e.payload.doc.id,
+					...e.payload.doc.data() as Coupon
+				};
+			});
 		});
 	}
 
@@ -109,8 +126,10 @@ export class OrderComponent implements OnInit {
 			this.totalPrice += this.seaweed.price;
 		}
 
-		if (this.isSale) {
+		if (this.isGlobalSale) {
 			this.discountedPrice = this.totalPrice * ((100 - this.sale.discount) / 100);
+		} else if (this.coupon) {
+			this.discountedPrice = this.totalPrice * ((100 - this.coupon.discount) / 100);
 		}
 	}
 
@@ -157,6 +176,22 @@ export class OrderComponent implements OnInit {
 		}
 
 		this.recalculateTotalPrice();
+	}
+
+	parseCoupon(event: any) {
+		this.couponName = event.target.value;
+	}
+
+	onCouponSubmitted() {
+		this.coupon = this.coupons.find(c => c.name === this.couponName);
+
+		if (!!this.coupon) {
+			this.discount = this.coupon.discount;
+			this.couponMessage = this.coupon.discount + "% kedvezmény érvényesítve";
+			this.recalculateTotalPrice();
+		} else {
+			this.couponMessage = "Érvénytelen kupon kód";
+		}
 	}
 
 	toggleBag() {
@@ -216,7 +251,9 @@ export class OrderComponent implements OnInit {
 			seaweed: this.seaweedChecked,
 			fulfilledDate: '',
 			orderDate: new Date().toString(),
-			warrantyDate: ''
+			warrantyDate: '',
+			coupon: this.coupon ? this.coupon.name : this.sale ? this.sale.text : '',
+			discount: this.discount ? this.discount : 0
 		};
 
 		this.mailService.sendOrderConfirmation(order).finally(() => {

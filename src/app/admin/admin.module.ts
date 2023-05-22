@@ -13,6 +13,7 @@ import { AdminVideoComponent } from './adminvideo/adminvideo.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { NewsComponent } from './news/news.component';
 import { SaleComponent } from './sale/sale.component';
+import { CouponComponent } from './coupon/coupon.component';
 
 const routes: Routes = [
     { path: '', component: LoginComponent }
@@ -27,7 +28,8 @@ const routes: Routes = [
         AdminVideoComponent,
         InventoryComponent,
         NewsComponent,
-        SaleComponent
+        SaleComponent,
+        CouponComponent
     ],
     imports: [
         HttpClientModule,

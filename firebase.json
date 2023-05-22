@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "hu",
-      "public": "dist",
+      "public": "dist-hu",
       "ignore": [
         "**/.*"
       ],

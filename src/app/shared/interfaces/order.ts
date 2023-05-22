@@ -18,4 +18,6 @@ interface Order {
     warrantyDate: Date | string;
     warrantyFirst?: boolean;
     warrantySecond?: boolean;
+    coupon?: string;
+    discount?: number;
 }

@@ -1,0 +1,77 @@
+<div class="wrapper">
+	<div class="main">
+		<div class="container">
+			<div class="text-center">
+				<h3>Kuponok</h3>
+			</div>
+			<div class="table-responsive">
+				<p class="no-coupons" *ngIf="items.length === 0; else coupons">Még nem adtál hozzá egy kupont sem.
+				</p>
+				<ng-template #coupons>
+					<table class="table" style="text-align: center">
+						<thead>
+							<tr>
+								<th scope="col" class="col-md-4">Név</th>
+								<th scope="col" class="col-md-2">Kedvezmény</th>
+								<th scope="col" class="col-md-2"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<ng-container *ngFor="let item of sortBy('name')">
+								<tr class="item-row">
+									<td>
+										<p *ngIf="!isBeingEdited(item.id)">{{item.name}}</p>
+										<input *ngIf="isBeingEdited(item.id)" [value]="item.name"
+											(input)="parseName($event)" />
+									</td>
+									<td>
+										<p *ngIf="!isBeingEdited(item.id)">{{item.discount}}</p>
+										<input *ngIf="isBeingEdited(item.id)" [value]="item.discount"
+											(input)="parseDiscount($event)" type="number" />
+									</td>
+									<td>
+										<i *ngIf="!isBeingEdited(item.id)" class="fa fa-pencil" style="color:orange"
+											(click)="onEdit(item)" data-toggle="tooltip" data-placement="top"
+											title="Szerkesztés"></i>
+										<i *ngIf="isBeingEdited(item.id)" class="fa fa-download" style="color:green"
+											(click)="onSave()" data-toggle="tooltip" data-placement="top"
+											title="Mentés"></i>
+										<i *ngIf="isBeingEdited(item.id)" class="fa fa-ban" style="color:orange"
+											(click)="onCancel()" data-toggle="tooltip" data-placement="top"
+											title="Elvetés"></i>
+										<i *ngIf="!isBeingEdited(item.id)" class="fa fa-trash" style="color:red"
+											(click)="onDelete(item.id)" data-toggle="tooltip" data-placement="top"
+											title="Törlés"></i>
+									</td>
+								</tr>
+							</ng-container>
+						</tbody>
+					</table>
+				</ng-template>
+
+				<div *ngIf="this.itemToCreate" class="new-item">
+					<div class="text-center" style="display:block; margin: 0">
+						<h3 style="margin: 0">Új kupon felvétele</h3>
+						<br>
+					</div>
+					<div>
+						<p class="edit-title"><strong>Név:</strong></p>
+						<input (input)="parseNewName($event)" />
+					</div>
+					<div>
+						<p class="edit-title"><strong>Kedvezmény (%):</strong></p>
+						<input (input)="parseNewDiscount($event)" type="number" />
+					</div>
+					<div class="item-actions">
+						<i class="fa fa-download" style="color:green" (click)="onSaveNew()" data-toggle="tooltip"
+							data-placement="top" title="Mentés"></i>
+						<i class="fa fa-ban" style="color:orange" (click)="onCancelNew()" data-toggle="tooltip"
+							data-placement="top" title="Elvetés"></i>
+					</div>
+				</div>
+				<i *ngIf="!this.itemToCreate" class="fa fa-plus" style="color:green" (click)="onCreate()"
+					data-toggle="tooltip" data-placement="top" title="Új kép"></i>
+			</div>
+		</div>
+	</div>
+</div>

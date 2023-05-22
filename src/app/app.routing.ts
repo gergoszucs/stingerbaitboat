@@ -21,6 +21,7 @@ import { BasicComponent } from './components/basic/basic.component';
 import { MediumComponent } from './components/medium/medium.component';
 import { MaxComponent } from './components/max/max.component';
 import { AutopilotComponent } from './components/autopilot/autopilot.component';
+import { CouponComponent } from './admin/coupon/coupon.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -40,7 +41,8 @@ const routes: Routes = [
 	{ path: 'admin/kepek', component: AdminPhotoComponent, canActivate: [AuthGuard] },
 	{ path: 'admin/videok', component: AdminVideoComponent, canActivate: [AuthGuard] },
 	{ path: 'admin/ujdonsag', component: NewsComponent, canActivate: [AuthGuard] },
-	{ path: 'admin/akcio', component: SaleComponent, canActivate: [AuthGuard] }
+	{ path: 'admin/akcio', component: SaleComponent, canActivate: [AuthGuard] },
+	{ path: 'admin/kuponok', component: CouponComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

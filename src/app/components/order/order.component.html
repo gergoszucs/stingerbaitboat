@@ -282,6 +282,28 @@
 					</div>
 				</div>
 
+				<div *ngIf="!isGlobalSale" class="container coupons">
+					<div>
+						<h3>Kupon</h3>
+						<p class="subtitle">Amennyiben rendelkezel aktív kupon kóddal, itt tudod megadni a kedvezmény
+							érvényesítéséhez.
+						</p>
+					</div>
+					<div class="grp">
+						<div class="row">
+							<div class="col-sm">
+								<div class="coupon-div">
+									<div><input type="text" (input)="parseCoupon($event)" [disabled]="orderProcessed">
+									</div>
+									<div><button (click)="onCouponSubmitted()" [disabled]="orderProcessed"
+											class="btn btn-danger btn-block btn-round nav-link">Aktiválás</button></div>
+									<div *ngIf="couponMessage">{{couponMessage}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="container summary">
 					<div>
 						<h3>Kosár</h3>
@@ -385,11 +407,12 @@
 							</div>
 							<div class="row total-price">
 								<div class="col text-start">
-									<h5 class="basket">Összesen {{isSale ? '(-' + sale.discount + '% kedvezménnyel)' :
+									<h5 class="basket">Összesen {{discount ? '(-' + discount + '%
+										kedvezménnyel)' :
 										''}}</h5>
 								</div>
 								<div class="col text-end">
-									<h5>{{isSale ? discountedPrice : totalPrice | number:'1.0-0'}} Ft</h5>
+									<h5>{{discount ? discountedPrice : totalPrice | number:'1.0-0'}} Ft</h5>
 								</div>
 							</div>
 						</div>

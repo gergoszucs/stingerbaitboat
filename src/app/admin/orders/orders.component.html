@@ -383,6 +383,14 @@
                     (change)="parseLight($event)" />
             </div>
             <div>
+                <p class="edit-title"><strong>Kupon kód:</strong></p>
+                <p class="value">{{order.coupon}}</p>
+            </div>
+            <div>
+                <p class="edit-title"><strong>Kedvezmény:</strong></p>
+                <p class="value">{{order.discount}}%</p>
+            </div>
+            <div>
                 <p class="edit-title"><strong>Rendelés:</strong></p>
                 <p *ngIf="!orderToEdit" class="value">{{ order.orderDate !== null ?
                     (order.orderDate | date:'yyyy-MM-dd') : "-"}} </p>
