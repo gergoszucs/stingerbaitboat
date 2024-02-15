@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
 
 	boat: Item = {
 		name: "Beluga Basic",
-		price: 250000
+		price: 260000
 	};
 
 	color: Item = {
@@ -55,7 +55,7 @@ export class OrderComponent implements OnInit {
 
 	seaweed: Item = {
 		name: "Hínárvédő",
-		price: 10000
+		price: 15000
 	}
 	seaweedChecked = false;
 
