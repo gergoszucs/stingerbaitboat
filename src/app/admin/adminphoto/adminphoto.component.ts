@@ -51,7 +51,7 @@ export class AdminPhotoComponent implements OnInit {
 	}
 
 	getFullUrl(id: string) {
-		return `https://drive.google.com/uc?id=${id}`;
+		return `https://lh3.google.com/u/0/d/${id}`;
 	}
 
 	onDelete(id: string) {

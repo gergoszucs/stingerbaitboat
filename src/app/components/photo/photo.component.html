@@ -14,7 +14,7 @@
 				<ul class="image-gallery">
 					<ng-container *ngFor="let photo of photos">
 						<li>
-							<img [src]="getFullUrl(photo.url)" (click)="showLightbox(0)" />
+							<img [src]="getFullUrl(photo.url)" (click)="showLightbox(0)" referrerPolicy="no-referrer" />
 						</li>
 					</ng-container>
 				</ul>

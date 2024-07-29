@@ -26,7 +26,7 @@
 				<ngb-carousel>
 					<ng-template ngbSlide>
 						<div>
-							<img src="./assets/img/carousel1.jpg">
+							<img src="./assets/img/carousel1.jpg" referrerPolicy="no-referrer">
 							<div class="carousel-caption">
 								<p></p>
 							</div>
@@ -34,7 +34,7 @@
 					</ng-template>
 					<ng-template ngbSlide>
 						<div>
-							<img src="./assets/img/hajo_sor.jpg">
+							<img src="./assets/img/hajo_sor.jpg" referrerPolicy="no-referrer">
 							<div class="carousel-caption">
 								<p></p>
 							</div>
@@ -115,7 +115,7 @@
 				<p>{{news.text}}</p>
 			</div>
 			<div class="row-md-8"><img [src]="getFullUrl(news.photoUrl)" [width]="screenWidth"
-					style="margin-bottom: 40px;"><br>
+					referrerPolicy="no-referrer" style="margin-bottom: 40px;"><br>
 			</div>
 			<div class="row-md-8">
 				<youtube-player [videoId]="news.videoUrl" suggestedQuality="highres" [height]="screenHeight"
