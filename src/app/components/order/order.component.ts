@@ -17,7 +17,7 @@ export class OrderComponent implements OnInit {
 	sale: Sale;
 
 	boat: Item = {
-		name: "Beluga Basic",
+		name: "Titán Basic",
 		price: 260000
 	};
 
@@ -284,13 +284,13 @@ export class OrderComponent implements OnInit {
 			this.updateItem("Szabályzó kefés", 1, lowCountItems);
 		}
 		if (order.boat.includes("Medium")) {
-			this.updateItem("1600W", 1, lowCountItems);
-			this.updateItem("5000", 1, lowCountItems);
-			this.updateItem("80A BL", 1, lowCountItems);
+			this.updateItem("2000W", 1, lowCountItems);
+			this.updateItem("8000", 1, lowCountItems);
+			this.updateItem("120A BL", 1, lowCountItems);
 		}
 		if (order.boat.includes("Max")) {
 			this.updateItem("2000W", 1, lowCountItems);
-			this.updateItem("8000", 1, lowCountItems);
+			this.updateItem("16000", 1, lowCountItems);
 			this.updateItem("120A BL", 1, lowCountItems);
 		}
 
