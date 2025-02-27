@@ -90,7 +90,8 @@ export class MailService {
         expectedFullfillmentDate.setDate(expectedFullfillmentDate.getDate() + 45)
 
         return this.firestore.collection('mail').add({
-            to: 'stingerbaitboat@gmail.com',
+            to: 'gergobenceszucs@gmail.com',
+            // to: 'stingerbaitboat@gmail.com',
             message: {
                 subject: `Új rendelés érkezett (${order.name})!`,
                 html: `
